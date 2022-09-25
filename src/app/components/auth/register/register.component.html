@@ -1,0 +1,140 @@
+<div class="container">
+
+    <div class="row justify-content-center">
+        <div class="col-xl-4 col-lg-6 col-md-6 border border-info rounded shadow px-5 py-4 mt-auto"
+            style="position: absolute; top:50%; transform: translate(0, -50%)">
+            <h2 class="text-center text-primary">Register</h2>
+            <hr>
+
+            <div class="alert alert-warning alert-dismissible fade show" role="alert" *ngIf="error_message">
+                {{ error_message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+
+            <form [formGroup]="registerForm" (ngSubmit)="register()">
+                <table class="m-auto" cellpadding="5">
+
+                    <tr class="d-flex justify-content-between align-items-center">
+                        <td><label for="id_username">Username:</label></td>
+                        <td>
+                            <input type="text" class="form-control" placeholder="Username" required id="id_username"
+                                formControlName="username" autofocus>
+
+                            <small
+                                *ngIf="registerForm.get('username')?.touched && registerForm.get('username')?.invalid"
+                                class="text-danger">
+                                Enter a valid username
+                            </small>
+                        </td>
+                    </tr>
+
+                    <tr class="d-flex justify-content-between align-items-center">
+                        <td><label for="id_fistname">First Name:</label></td>
+                        <td>
+                            <input type="text" class="form-control" placeholder="Enter firstname" required
+                                id="id_fistname" formControlName="first_name">
+
+                            <small
+                                *ngIf="registerForm.get('first_name')?.touched && registerForm.get('first_name')?.invalid"
+                                class="text-danger">
+                                Enter a valid name
+                            </small>
+                        </td>
+                    </tr>
+
+                    <tr class="d-flex justify-content-between align-items-center">
+                        <td><label for="id_lastname">Last Name:</label></td>
+                        <td>
+                            <input type="text" class="form-control" placeholder="Enter lastname" required
+                                id="id_lastname" formControlName="last_name">
+
+                            <small
+                                *ngIf="registerForm.get('last_name')?.touched && registerForm.get('last_name')?.invalid"
+                                class="text-danger">
+                                Enter a valid name
+                            </small>
+                        </td>
+                    </tr>
+
+                    <tr class="d-flex justify-content-between align-items-center">
+                        <td><label for="id_email">Mail address:</label></td>
+                        <td>
+                            <input type="email" class="form-control" placeholder="Enter email address" required
+                                id="id_email" formControlName="email">
+
+                            <small *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid"
+                                class="text-danger">
+                                Enter a valid name
+                            </small>
+                        </td>
+                    </tr>
+
+                    <tr class="d-flex justify-content-between align-items-center">
+                        <td><label for="id_gender">Gender:</label></td>
+                        <td>
+                            <select name="gender" id="id_gender" class="form-select" formControlName="gender" required>
+                                <option selected disabled>Select a gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr class="d-flex justify-content-between align-items-center">
+                        <td><label for="id_role">Registerd as:</label></td>
+                        <td class="d-flex justify-content-center">
+                            <div class="mx-3">
+                                <input type="radio" id="doctor" style="cursor: pointer" name="role" value="doctor"
+                                    class="mx-1" formControlName="role">
+                                <label for="doctor" style="cursor: pointer">Doctor</label>
+                            </div>
+                            <div>
+                                <input checked type="radio" id="patient" style="cursor: pointer" name="role"
+                                    value="patient" class="mx-1" formControlName="role">
+                                <label for="patient" style="cursor: pointer">Patient</label>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr class="d-flex justify-content-between align-items-center">
+                        <td><label for="id_password1">Password:</label></td>
+                        <td>
+                            <input type="password" class="form-control" placeholder="Enter password" required
+                                id="id_password1" formControlName="password">
+
+                            <small
+                                *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid"
+                                class="text-danger">
+                                Enter a valid name
+                            </small>
+                        </td>
+                    </tr>
+
+                    <tr class="d-flex justify-content-between align-items-center">
+                        <td><label for="id_password2">Confirm password:</label></td>
+                        <td>
+                            <input type="password" class="form-control" placeholder="Confirm password" required
+                                id="id_password2" formControlName="password2">
+
+                            <small
+                                *ngIf="registerForm.get('password2')?.touched && registerForm.get('password2')?.invalid"
+                                class="text-danger">
+                                Enter a valid name
+                            </small>
+                        </td>
+                    </tr>
+
+
+                </table>
+                <div class="text-center">
+                    <input type="submit" class="btn btn-primary mt-4 mb-2 px-5" value="Register"><br>
+                    <a routerLink="/login" class="text-decoration-none">
+                        <span>Already have an account?</span>
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
