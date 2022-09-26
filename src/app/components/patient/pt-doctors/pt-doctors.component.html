@@ -1,3 +1,5 @@
+<app-pt-navbar></app-pt-navbar>
+
 <div class="container px-4 py-5">
     <h2 class="pb-2 border-bottom">Specialized</h2>
 
@@ -10,13 +12,15 @@
                     <div *ngIf="doctor.profile_image">
                         <img src="{{ doctor.profile_image }}" class="mx-3" alt="doctr pic" width="65px" height="65px">
                     </div>
-                    <div *ngIf="doctor?.details?.gender == 'male'">
-                        <img [src]="'assets/images/profile_male.svg'" class="mx-3" alt="doctr pic" width="65px"
-                            height="65px">
-                    </div>
-                    <div *ngIf="doctor.details.gender == 'female'">
-                        <img [src]="'assets/images/profile_female.svg'" class="mx-3" alt="doctr pic" width="65px"
-                            height="65px">
+                    <div *ngIf="!doctor.profile_image">
+                        <div *ngIf="doctor?.details?.gender == 'male'">
+                            <img [src]="'assets/images/profile_male.svg'" class="mx-3" alt="doctr pic" width="65px"
+                                height="65px">
+                        </div>
+                        <div *ngIf="doctor.details.gender == 'female'">
+                            <img [src]="'assets/images/profile_female.svg'" class="mx-3" alt="doctr pic" width="65px"
+                                height="65px">
+                        </div>
                     </div>
                 </div>
 

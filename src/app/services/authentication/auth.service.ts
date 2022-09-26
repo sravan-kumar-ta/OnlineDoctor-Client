@@ -33,4 +33,18 @@ export class AuthService {
 
     return fetch(this.url, local_option)
   }
+
+  getUser() {
+    this.url = `${this.domain}/user/`;
+    let token = localStorage.getItem('token');
+    let options = {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+        'Authorization': "Bearer " + token
+      }
+    }
+
+    return fetch(this.url, options)
+  }
 }
