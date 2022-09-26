@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/authentication/auth.service';
 
 @Component({
@@ -22,7 +23,7 @@ export class RegisterComponent implements OnInit {
 
   error_message: any = ``
 
-  constructor(private service: AuthService) { }
+  constructor(private service: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -32,17 +33,15 @@ export class RegisterComponent implements OnInit {
     let data = this.registerForm.value;
     this.service.register(data).then(res => {
       if (res.ok) {
-        res.json().then(data => console.log(data));
+        res.json().then(() => this.router.navigate(['login']));
       } else {
         res.json().then(data => {
           for (const key in data) {
             this.error_message += `${key}: ${data[key]}\n\n`;
-            console.log(`${key}: ${data[key]}`);
             this.registerForm.get(key)?.setErrors({'invalid': true})
           }
         });
       }
     })
   }
-
 }

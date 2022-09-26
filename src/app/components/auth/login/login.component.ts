@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
   })
 
   error_message: string = ''
+  role: string = ''
+  token: string = ''
 
   constructor(private service: AuthService, private router: Router) { }
 
@@ -26,13 +28,21 @@ export class LoginComponent implements OnInit {
     this.error_message = '';
 
     let data = this.loginForm.value;
-    this.service.getToken(data).then(res => {
+    this.service.login(data).then(res => {
+      console.log(res)
       if (res.ok) {
-        res.json().then(data => localStorage.setItem('token', data.token));
+        res.json().then(data => {
+          localStorage.removeItem('token');
+          localStorage.setItem('token', data.tokens.access);
+          if(data.role == 'patient') {
+            this.router.navigate(['home/'])
+          }
+        });
       } else {
         res.json().then(data => this.error_message = data.detail);
       }
-    })
+    });
+
   }
 
 }

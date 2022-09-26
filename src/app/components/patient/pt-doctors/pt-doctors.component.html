@@ -1,0 +1,58 @@
+<div class="container px-4 py-5">
+    <h2 class="pb-2 border-bottom">Specialized</h2>
+
+    <div *ngIf="doctors.length > 0">
+        <div *ngFor="let doctor of doctors"
+            class="shadow col d-flex align-items-center justify-content-around m-4 p-4 rounded border border-info">
+
+            <div class="d-flex align-items-center">
+                <div>
+                    <div *ngIf="doctor.profile_image">
+                        <img src="{{ doctor.profile_image }}" class="mx-3" alt="doctr pic" width="65px" height="65px">
+                    </div>
+                    <div *ngIf="doctor?.details?.gender == 'male'">
+                        <img [src]="'assets/images/profile_male.svg'" class="mx-3" alt="doctr pic" width="65px"
+                            height="65px">
+                    </div>
+                    <div *ngIf="doctor.details.gender == 'female'">
+                        <img [src]="'assets/images/profile_female.svg'" class="mx-3" alt="doctr pic" width="65px"
+                            height="65px">
+                    </div>
+                </div>
+
+                <div>
+                    <div class="d-flex align-items-center">
+                        <h2 class="text-muted">{{ doctor.details.first_name }} {{ doctor.details.last_name }}</h2>
+                        <small>(Mbbs, md)</small>
+                    </div>
+                    <div class="d-flex">
+                        <small class="border bg-success text-white rounded p-1">Malayalam</small>
+                        <small class="border bg-success text-white rounded p-1">English</small>
+                        <small class="border bg-success text-white rounded p-1">Hindi</small>
+                    </div>
+                </div>
+            </div>
+
+
+            <div>
+                <div class="text-center">
+                    <div class="d-flex align-items-center">
+                        Rating:&#9733;&#9733;&#9733;&#9734;&#9734;3/5
+                    </div>
+                    <h6 class="py-2">12 patients helped</h6>
+                    <a href="" class="btn btn-outline-primary">Book appointment</a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="doctors.length < 1"
+        class="shadow col d-flex align-items-center justify-content-around m-4 p-4 rounded border border-warning">
+        <div class="d-flex align-items-center text-muted">
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+            <h3 class="mx-3">No doctors available</h3>
+        </div>
+    </div>
+</div>

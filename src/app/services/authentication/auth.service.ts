@@ -9,6 +9,7 @@ export class AuthService {
   url: string = ''
   options: any = {
     method: 'GET',
+    body: '',
     headers: {
       'Content-type': 'application/json; charset=UTF-8'
     }
@@ -16,8 +17,8 @@ export class AuthService {
 
   constructor() { }
 
-  getToken(data: any) {
-    this.url = `${this.domain}/token/`
+  login(data: any) {
+    this.url = `${this.domain}/login/`
     this.options.method = 'POST'
     this.options.body = JSON.stringify(data)
 
@@ -27,8 +28,9 @@ export class AuthService {
   register(data: any) {
     this.url = `${this.domain}/user/register/`
     this.options.method = 'POST'
-    this.options.body = JSON.stringify(data)
+    let local_option = this.options
+    local_option = JSON.stringify(data)
 
-    return fetch(this.url, this.options)
+    return fetch(this.url, local_option)
   }
 }
