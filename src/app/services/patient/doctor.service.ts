@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -15,20 +16,11 @@ export class DoctorService {
     }
   }
 
-  constructor() { }
-
+  constructor(private http: HttpClient) { }
+  
   getSpecialities() {
-    this.url = `${this.domain}/specialities/`
-    let token = localStorage.getItem('access_token');
-    let options: any = {
-      method: 'GET',
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-        'Authorization': "Bearer " + token
-      }
-    }
-
-    return fetch(this.url, options)
+    let url = `${this.domain}/specialities/`
+    return this.http.get(url);
   }
 
   doctorsList(id: number) {
@@ -43,6 +35,11 @@ export class DoctorService {
     }
 
     return fetch(this.url, options)
+  }
+  
+  doctorsList2(id: number) {
+    let url = `${this.domain}/doctors/${id}/`
+    return this.http.get(url);
   }
 }
   

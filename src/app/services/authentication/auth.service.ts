@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -16,7 +17,7 @@ export class AuthService {
     }
   }
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private http: HttpClient) { }
 
   login(data: any) {
     this.url = `${this.domain}/login/`
@@ -34,23 +35,36 @@ export class AuthService {
 
     return fetch(this.url, local_option)
   }
-
+  
   getUser() {
-    this.url = `${this.domain}/user/`;
-    let token = localStorage.getItem('access_token');
-    let options = {
-      method: 'GET',
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-        'Authorization': "Bearer " + token
-      }
-    }
-
-    return fetch(this.url, options)
+    let url = `${this.domain}/user/`;
+    return this.http.get(url);
   }
 
   isLoggedIn() {
     return localStorage.getItem('access_token') != null;
+  }
+
+  getAccessToken() {
+    return localStorage.getItem('access_token') || '';
+  }
+
+  getRefreshToken() {
+    return localStorage.getItem("refresh_token") || '';
+  }
+
+  generateRefreshToken() {
+    let url = 'http://127.0.0.1:8000/api/token/refresh/'
+    let body = {
+      "refresh": this.getRefreshToken()
+    }
+    console.log('generating refresh token from service')
+    return this.http.post(url, body);
+  }
+
+  saveTokens(tokens: any) {
+    localStorage.setItem('access_token', tokens.access);
+    localStorage.setItem('refresh_token', tokens.refresh);
   }
 
   logout() {

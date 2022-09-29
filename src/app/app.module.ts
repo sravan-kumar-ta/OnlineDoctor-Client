@@ -10,6 +10,8 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { PtHomeComponent } from './components/patient/pt-home/pt-home.component';
 import { PtDoctorsComponent } from './components/patient/pt-doctors/pt-doctors.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from './services/authentication/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -24,9 +26,16 @@ import { PtDoctorsComponent } from './components/patient/pt-doctors/pt-doctors.c
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,7 +3,7 @@
 <div class="container px-4 py-5">
     <h2 class="pb-2 border-bottom">Specialized</h2>
 
-    <div *ngIf="doctors.length > 0">
+    <div *ngIf="doctors?.length > 0">
         <div *ngFor="let doctor of doctors"
             class="shadow col d-flex align-items-center justify-content-around m-4 p-4 rounded border border-info">
 
@@ -52,7 +52,7 @@
         </div>
     </div>
 
-    <div *ngIf="doctors.length < 1"
+    <div *ngIf="doctors?.length < 1"
         class="shadow col d-flex align-items-center justify-content-around m-4 p-4 rounded border border-warning">
         <div class="d-flex align-items-center text-muted">
             <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>

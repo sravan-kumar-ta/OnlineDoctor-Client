@@ -13,7 +13,7 @@ export class PtNavbarComponent implements OnInit {
   constructor(private service:AuthService) { }
 
   ngOnInit(): void {
-    this.service.getUser().then(res => res.json()).then(data => this.user = data);
+    this.service.getUser().subscribe(data => this.user = data);
   }
 
   logout() {

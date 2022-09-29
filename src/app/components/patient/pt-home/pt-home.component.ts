@@ -13,10 +13,9 @@ export class PtHomeComponent implements OnInit {
   constructor(private services: DoctorService) { }
 
   ngOnInit(): void {
-    this.services.getSpecialities().then(res => res.json()).then(data => {
-      console.log(data)
+    this.services.getSpecialities().subscribe(data => {
       this.allCategories = data;
-    });
+    })
   }
 
 }
