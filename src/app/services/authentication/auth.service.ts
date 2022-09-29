@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -6,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class AuthService {
 
   domain: string = 'http://127.0.0.1:8000/api'
-  url: string = ''
+  url: string = ''  
   options: any = {
     method: 'GET',
     body: '',
@@ -15,7 +16,7 @@ export class AuthService {
     }
   }
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   login(data: any) {
     this.url = `${this.domain}/login/`
@@ -36,7 +37,7 @@ export class AuthService {
 
   getUser() {
     this.url = `${this.domain}/user/`;
-    let token = localStorage.getItem('token');
+    let token = localStorage.getItem('access_token');
     let options = {
       method: 'GET',
       headers: {
@@ -46,5 +47,15 @@ export class AuthService {
     }
 
     return fetch(this.url, options)
+  }
+
+  isLoggedIn() {
+    return localStorage.getItem('access_token') != null;
+  }
+
+  logout() {
+    alert('Your session expired');
+    localStorage.clear();
+    this.router.navigate(['']);
   }
 }

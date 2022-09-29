@@ -19,7 +19,7 @@ export class DoctorService {
 
   getSpecialities() {
     this.url = `${this.domain}/specialities/`
-    let token = localStorage.getItem('token');
+    let token = localStorage.getItem('access_token');
     let options: any = {
       method: 'GET',
       headers: {

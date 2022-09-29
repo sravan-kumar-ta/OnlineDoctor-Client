@@ -16,4 +16,8 @@ export class PtNavbarComponent implements OnInit {
     this.service.getUser().then(res => res.json()).then(data => this.user = data);
   }
 
+  logout() {
+    this.service.logout();
+  }
+
 }
