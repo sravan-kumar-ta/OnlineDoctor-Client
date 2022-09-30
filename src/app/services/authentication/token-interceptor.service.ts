@@ -26,6 +26,7 @@ export class TokenInterceptorService implements HttpInterceptor {
   handleRefrehToken(request: HttpRequest<any>, next: HttpHandler) {
     return this.service.generateRefreshToken().pipe(switchMap((data: any) => {
       this.service.saveTokens(data);
+      console.log('token refreshing...')
       return next.handle(this.AddTokenheader(request, data.access))
     }),
       catchError(errodata => {

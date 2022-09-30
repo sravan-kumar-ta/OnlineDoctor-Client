@@ -1,0 +1,54 @@
+<app-pt-navbar></app-pt-navbar>
+
+<div class="container px-4 py-5" id="icon-grid">
+    <h2 class="pb-2 border-bottom">Update user</h2>
+
+    <div class="row px-5">
+        <div class="col-lg-4 col-md-8 border rounded py-3">
+            <form [formGroup]="userForm" (ngSubmit)="updateUser()">
+                <table class="m-auto" cellpadding="5">
+                    <tr class="d-flex justify-content-between align-items-center">
+                        <td>Firstname</td>
+                        <td><input required type="text" formControlName="first_name" class="form-control"></td>
+                    </tr>
+                    <tr class="d-flex justify-content-between align-items-center">
+                        <td>Lastname</td>
+                        <td><input required type="text" formControlName="last_name" class="form-control">
+                        </td>
+                    </tr>
+                    <tr class="d-flex justify-content-between align-items-center">
+                        <td>Username</td>
+                        <td>
+                            <input required type="text" formControlName="username" class="form-control">
+                            <small *ngIf="usernameError" class="text-danger">
+                                {{ usernameError }}
+                            </small>
+                        </td>
+                    </tr>
+                    <tr class="d-flex justify-content-between align-items-center">
+                        <td>Email</td>
+                        <td>
+                            <input required type="email" formControlName="email" class="form-control">
+                            <small *ngIf="emailError" class="text-danger">
+                                {{ emailError }}
+                            </small>
+                        </td>
+                    </tr>
+                    <tr class="d-flex justify-content-between align-items-center">
+                        <td>Gender</td>
+                        <td>
+                            <select name="gender" formControlName="gender" class="form-select">
+                                <option value="male" [selected]="user?.gender === 'male'">male</option>
+                                <option value="female" [selected]="user?.gender === 'female'">Female</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <hr>
+                    <tr class="text-center">
+                        <td colspan="2"><button type="submit" class="btn btn-primary">Update</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>

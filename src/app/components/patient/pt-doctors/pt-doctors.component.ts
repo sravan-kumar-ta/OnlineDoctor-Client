@@ -17,7 +17,7 @@ export class PtDoctorsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.doctorsList2(this.id).subscribe(data => {
+    this.service.doctorsList(this.id).subscribe(data => {
       this.doctors = data;
     })
   }

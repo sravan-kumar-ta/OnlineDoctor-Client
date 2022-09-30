@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('refresh_token', data.tokens.refresh);
           if(data.role == 'patient') {
             console.log('redirecting')
-            this.router.navigate(['home/'])
+            this.router.navigate(['/patient/home/'])
           }
         });
       } else {

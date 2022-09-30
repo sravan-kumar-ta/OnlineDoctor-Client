@@ -58,7 +58,6 @@ export class AuthService {
     let body = {
       "refresh": this.getRefreshToken()
     }
-    console.log('generating refresh token from service')
     return this.http.post(url, body);
   }
 

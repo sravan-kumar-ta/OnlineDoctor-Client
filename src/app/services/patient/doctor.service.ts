@@ -22,24 +22,21 @@ export class DoctorService {
     let url = `${this.domain}/specialities/`
     return this.http.get(url);
   }
-
-  doctorsList(id: number) {
-    this.url = `${this.domain}/doctors/${id}/`
-    let token = localStorage.getItem('token');
-    let options: any = {
-      method: 'GET',
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-        'Authorization': "Bearer " + token
-      }
-    }
-
-    return fetch(this.url, options)
-  }
   
-  doctorsList2(id: number) {
+  doctorsList(id: number) {
     let url = `${this.domain}/doctors/${id}/`
     return this.http.get(url);
   }
+
+  getFamilyMembers() {
+    let url = `${this.domain}/family_members/`
+    return this.http.get(url);
+  }
+
+  updateUser(data: any){
+    let url = `${this.domain}/user/`
+    return this.http.patch(url, data, { observe: 'response' });
+  }
+
 }
   
