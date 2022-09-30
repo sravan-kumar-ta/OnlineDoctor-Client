@@ -38,5 +38,25 @@ export class DoctorService {
     return this.http.patch(url, data, { observe: 'response' });
   }
 
+  addMember(data: any){
+    let url = `${this.domain}/family_members/`
+    return this.http.post(url, data, { observe: 'response' });
+  }
+
+  getFamilyMember(id: number){
+    let url = `${this.domain}/family_members/${id}/`
+    return this.http.get(url);
+  }
+
+  updateFamilyMember(data: any, id: number){
+    let url = `${this.domain}/family_members/${id}/`
+    return this.http.put(url, data, { observe: 'response' });
+  }
+
+  deleteFamilyMember(id: number){
+    let url = `${this.domain}/family_members/${id}/`
+    return this.http.delete(url);
+  }
+
 }
   

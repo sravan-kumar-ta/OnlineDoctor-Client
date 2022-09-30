@@ -13,6 +13,12 @@ export class PtProfileComponent implements OnInit {
   user: any;
   members: any;
 
+  memberForm: any = new FormGroup({
+    relation: new FormControl('', Validators.required),
+    name: new FormControl('', Validators.required),
+    age: new FormControl('', Validators.required)
+  })
+
   constructor(private service: AuthService, private ptService: DoctorService) { }
 
   ngOnInit(): void {
@@ -23,6 +29,18 @@ export class PtProfileComponent implements OnInit {
       })
     });
     
+  }
+
+  addMembers() {
+    console.log(this.memberForm.value);
+    this.ptService.addMember(this.memberForm.value).subscribe(success => {
+      alert("Successfully added a member");
+      this.ptService.getFamilyMembers().subscribe(data => {
+        this.members = data;
+      })
+    }), (error: { statusText: any; }) => {
+      alert(error.statusText);
+    }
   }
 
 }

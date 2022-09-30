@@ -5,6 +5,7 @@ import { RegisterComponent } from './components/auth/register/register.component
 import { PtDoctorsComponent } from './components/patient/pt-doctors/pt-doctors.component';
 import { PtHomeComponent } from './components/patient/pt-home/pt-home.component';
 import { PtProfileComponent } from './components/patient/pt-profile/pt-profile.component';
+import { PtUpdateMemberComponent } from './components/patient/pt-update-member/pt-update-member.component';
 import { PtUpdateUserComponent } from './components/patient/pt-update-user/pt-update-user.component';
 import { AuthGuard } from './shared/auth.guard';
 
@@ -19,6 +20,7 @@ const routes: Routes = [
       {path:'doctors/:id', component:PtDoctorsComponent},
       {path:'profile', component:PtProfileComponent},
       {path:'update-user', component:PtUpdateUserComponent},
+      {path:'family-member/:id', component:PtUpdateMemberComponent},
     ], canActivate: [AuthGuard]
   },
 ];

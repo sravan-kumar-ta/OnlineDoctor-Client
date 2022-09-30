@@ -14,6 +14,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './services/authentication/token-interceptor.service';
 import { PtProfileComponent } from './components/patient/pt-profile/pt-profile.component';
 import { PtUpdateUserComponent } from './components/patient/pt-update-user/pt-update-user.component';
+import { PtUpdateMemberComponent } from './components/patient/pt-update-member/pt-update-member.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { PtUpdateUserComponent } from './components/patient/pt-update-user/pt-up
     PtDoctorsComponent,
     PtProfileComponent,
     PtUpdateUserComponent,
+    PtUpdateMemberComponent,
   ],
   imports: [
     BrowserModule,
