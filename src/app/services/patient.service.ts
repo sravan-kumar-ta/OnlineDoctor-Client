@@ -65,4 +65,19 @@ export class PatientService {
     return this.http.get(url, {params:{page:pageNumber}});
   }
 
+  getPost(id: number){
+    let url = `${this.domain}/posts/${id}/`
+    return this.http.get(url);
+  }
+
+  getLike(id: number){
+    let url = `${this.domain}/posts/${id}/liked_or_not/`
+    return this.http.get(url);
+  }
+
+  doLikeOrDislike(id: number){
+    let url = `${this.domain}/posts/${id}/like_or_dislike/`
+    return this.http.get(url);
+  }
+
 }

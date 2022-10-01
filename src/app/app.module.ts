@@ -16,6 +16,7 @@ import { PtProfileComponent } from './components/patient/pt-profile/pt-profile.c
 import { PtUpdateUserComponent } from './components/patient/pt-update-user/pt-update-user.component';
 import { PtUpdateMemberComponent } from './components/patient/pt-update-member/pt-update-member.component';
 import { PtBlogsComponent } from './components/patient/pt-blogs/pt-blogs.component';
+import { PtBlogDetailComponent } from './components/patient/pt-blog-detail/pt-blog-detail.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { PtBlogsComponent } from './components/patient/pt-blogs/pt-blogs.compone
     PtUpdateUserComponent,
     PtUpdateMemberComponent,
     PtBlogsComponent,
+    PtBlogDetailComponent,
   ],
   imports: [
     BrowserModule,

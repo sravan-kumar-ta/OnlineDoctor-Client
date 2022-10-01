@@ -17,7 +17,7 @@
                     </div>
                     <p class="card-text mb-auto">{{ post.content | slice:0:100 }}</p>
                     <div class="d-flex justify-content-between">
-                        <a href="% url 'blog:article-detail' post.pk %}" class="stretched-link">Continue
+                        <a [routerLink]="['/', 'patient', 'blogs', post?.id]"  class="stretched-link">Continue
                             reading...</a>
                         <div class="d-flex">
                             <div class="mx-2 border-bottom border-info">
@@ -39,14 +39,14 @@
     <hr>
     <ul class="pagination justify-content-center">
         <li class="page-item cursor" *ngIf="prevPage > 0">
-            <a class="page-link" (click)="getPost(prevPage)">&laquo; Previous</a>
+            <a class="page-link" (click)="getPosts(prevPage)">&laquo; Previous</a>
         </li>
         <li class="page-item disabled" *ngIf="prevPage == 0">
             <a class="page-link">&laquo; Previous</a>
         </li>
 
         <li class="page-item cursor" *ngIf="nextPage > 0">
-            <a class="page-link" (click)="getPost(nextPage)">Next &raquo;</a>
+            <a class="page-link" (click)="getPosts(nextPage)">Next &raquo;</a>
         </li>
         <li class="page-item disabled" *ngIf="nextPage == 0">
             <a class="page-link">Next &raquo;</a>
