@@ -1,0 +1,56 @@
+<app-pt-navbar></app-pt-navbar>
+
+<div class="container px-4 py-2" id="icon-grid">
+    <div class="d-flex align-items-center">
+        <h2 class="pb-2 border-bottom">Blogs</h2>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-md-6" *ngFor="let post of posts">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <h3 class="mb-0">{{ post.title | slice:0:20 }}</h3>
+                    <div class="d-flex text-muted">
+                        <p class="text-capitalize">Dr&nbsp;{{ post.author.first_name }} &nbsp;{{
+                            post.author.last_name }}</p>
+                        &nbsp;|&nbsp;<p class="text-capitalize">{{ post.date | date:'shortDate' }}</p>
+                    </div>
+                    <p class="card-text mb-auto">{{ post.content | slice:0:100 }}</p>
+                    <div class="d-flex justify-content-between">
+                        <a href="% url 'blog:article-detail' post.pk %}" class="stretched-link">Continue
+                            reading...</a>
+                        <div class="d-flex">
+                            <div class="mx-2 border-bottom border-info">
+                                {{ post.total_likes }}
+                                <i class="fa fa-thumbs-up text-success" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto d-none d-lg-block mt-3" *ngIf="post?.image">
+                    <img src="{{ post.image }}" alt="sas" style="height: 200px; max-width:250px;">
+                </div>
+                <div class="col-auto d-none d-lg-block" *ngIf="!post?.image">
+                    <img [src]="'assets/images/blog.jpg'" alt="" style="max-height: 200px">
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <ul class="pagination justify-content-center">
+        <li class="page-item cursor" *ngIf="prevPage > 0">
+            <a class="page-link" (click)="getPost(prevPage)">&laquo; Previous</a>
+        </li>
+        <li class="page-item disabled" *ngIf="prevPage == 0">
+            <a class="page-link">&laquo; Previous</a>
+        </li>
+
+        <li class="page-item cursor" *ngIf="nextPage > 0">
+            <a class="page-link" (click)="getPost(nextPage)">Next &raquo;</a>
+        </li>
+        <li class="page-item disabled" *ngIf="nextPage == 0">
+            <a class="page-link">Next &raquo;</a>
+        </li>
+    </ul>
+
+    <hr>

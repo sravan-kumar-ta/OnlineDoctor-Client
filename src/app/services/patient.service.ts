@@ -28,11 +28,6 @@ export class PatientService {
     return this.http.get(url);
   }
 
-  getFamilyMembers() {
-    let url = `${this.domain}/family_members/`
-    return this.http.get(url);
-  }
-
   updateUser(data: any) {
     let url = `${this.domain}/user/`
     return this.http.patch(url, data, { observe: 'response' });
@@ -41,6 +36,11 @@ export class PatientService {
   addMember(data: any) {
     let url = `${this.domain}/family_members/`
     return this.http.post(url, data, { observe: 'response' });
+  }
+
+  getFamilyMembers() {
+    let url = `${this.domain}/family_members/`
+    return this.http.get(url);
   }
 
   getFamilyMember(id: number) {
@@ -56,6 +56,13 @@ export class PatientService {
   deleteFamilyMember(id: number) {
     let url = `${this.domain}/family_members/${id}/`
     return this.http.delete(url);
+  }
+
+  // Blogs
+
+  getAllBlogs(pageNumber: number) {
+    let url = `${this.domain}/posts/`
+    return this.http.get(url, {params:{page:pageNumber}});
   }
 
 }

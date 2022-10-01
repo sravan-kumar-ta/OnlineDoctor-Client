@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
+import { PtBlogsComponent } from './components/patient/pt-blogs/pt-blogs.component';
 import { PtDoctorsComponent } from './components/patient/pt-doctors/pt-doctors.component';
 import { PtHomeComponent } from './components/patient/pt-home/pt-home.component';
 import { PtProfileComponent } from './components/patient/pt-profile/pt-profile.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
       {path:'profile', component:PtProfileComponent},
       {path:'update-user', component:PtUpdateUserComponent},
       {path:'family-member/:id', component:PtUpdateMemberComponent},
+      {path:'blogs', component:PtBlogsComponent},
     ], canActivate: [AuthGuard]
   },
 ];

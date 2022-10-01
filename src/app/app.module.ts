@@ -15,6 +15,7 @@ import { TokenInterceptorService } from './services/authentication/token-interce
 import { PtProfileComponent } from './components/patient/pt-profile/pt-profile.component';
 import { PtUpdateUserComponent } from './components/patient/pt-update-user/pt-update-user.component';
 import { PtUpdateMemberComponent } from './components/patient/pt-update-member/pt-update-member.component';
+import { PtBlogsComponent } from './components/patient/pt-blogs/pt-blogs.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { PtUpdateMemberComponent } from './components/patient/pt-update-member/p
     PtProfileComponent,
     PtUpdateUserComponent,
     PtUpdateMemberComponent,
+    PtBlogsComponent,
   ],
   imports: [
     BrowserModule,
