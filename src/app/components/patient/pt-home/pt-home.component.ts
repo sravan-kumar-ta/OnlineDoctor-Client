@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DoctorService } from 'src/app/services/patient/doctor.service';
+import { PatientService } from 'src/app/services/patient.service';
 
 @Component({
   selector: 'app-pt-home',
@@ -10,7 +10,7 @@ export class PtHomeComponent implements OnInit {
 
   allCategories:any = []
 
-  constructor(private services: DoctorService) { }
+  constructor(private services: PatientService) { }
 
   ngOnInit(): void {
     this.services.getSpecialities().subscribe(data => {

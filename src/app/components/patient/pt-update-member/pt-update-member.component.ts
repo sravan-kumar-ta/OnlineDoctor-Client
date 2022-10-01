@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DoctorService } from 'src/app/services/patient/doctor.service';
+import { PatientService } from 'src/app/services/patient.service';
 
 @Component({
   selector: 'app-pt-update-member',
@@ -18,7 +18,7 @@ export class PtUpdateMemberComponent implements OnInit {
     age: new FormControl('', Validators.required)
   })
 
-  constructor(private route:ActivatedRoute, private service: DoctorService, private router: Router) { }
+  constructor(private route:ActivatedRoute, private service: PatientService, private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(obj => {

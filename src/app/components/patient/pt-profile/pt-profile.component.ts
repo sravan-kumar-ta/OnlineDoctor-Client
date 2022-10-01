@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/authentication/auth.service';
-import { DoctorService } from 'src/app/services/patient/doctor.service';
+import { PatientService } from 'src/app/services/patient.service';
 
 @Component({
   selector: 'app-pt-profile',
@@ -19,7 +19,7 @@ export class PtProfileComponent implements OnInit {
     age: new FormControl('', Validators.required)
   })
 
-  constructor(private service: AuthService, private ptService: DoctorService) { }
+  constructor(private service: AuthService, private ptService: PatientService) { }
 
   ngOnInit(): void {
     this.service.getUser().subscribe(data => {

@@ -29,14 +29,12 @@ export class LoginComponent implements OnInit {
 
     let data = this.loginForm.value;
     this.service.login(data).then(res => {
-      console.log(res)
       if (res.ok) {
         res.json().then(data => {
           localStorage.removeItem('token');
           localStorage.setItem('access_token', data.tokens.access);
           localStorage.setItem('refresh_token', data.tokens.refresh);
           if(data.role == 'patient') {
-            console.log('redirecting')
             this.router.navigate(['/patient/home/'])
           }
         });
