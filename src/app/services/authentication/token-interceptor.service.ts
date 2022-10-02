@@ -14,8 +14,12 @@ export class TokenInterceptorService implements HttpInterceptor {
     let mod_request = this.AddTokenheader(request, this.service.getAccessToken());
 
     return next.handle(mod_request).pipe(catchError(errordata => {
-      if (errordata.status === 401) {
-        return this.handleRefrehToken(request, next);
+      if(request.url.match("/api/google/")){
+        return next.handle(request)
+      } else {
+        if (errordata.status === 401) {
+          return this.handleRefrehToken(request, next);
+        }
       }
       return throwError(errordata);
     })

@@ -40,7 +40,7 @@ export class PtUpdateUserComponent implements OnInit {
   }
 
   updateUser() {
-    this.ptService.updateUser(this.userForm.value).subscribe(success => {
+    this.service.updateUser(this.userForm.value).subscribe(success => {
       this.router.navigate(['patient/profile/'])
     }, error => {
       this.errorMessage = error.error.error_message

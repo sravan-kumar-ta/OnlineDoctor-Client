@@ -28,11 +28,6 @@ export class PatientService {
     return this.http.get(url);
   }
 
-  updateUser(data: any) {
-    let url = `${this.domain}/user/`
-    return this.http.patch(url, data, { observe: 'response' });
-  }
-
   addMember(data: any) {
     let url = `${this.domain}/family_members/`
     return this.http.post(url, data, { observe: 'response' });

@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/authentication/auth.service';
 
+import { SocialAuthService } from '@abacritt/angularx-social-login'
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,10 +20,45 @@ export class LoginComponent implements OnInit {
   error_message: string = ''
   role: string = ''
   token: string = ''
+  success_data: any;
+  user: any;
 
-  constructor(private service: AuthService, private router: Router) { }
+  constructor(
+    private service: AuthService,
+    private router: Router,
+    private authService: SocialAuthService
+  ) { }
 
   ngOnInit(): void {
+    this.authService.authState.subscribe(user => {
+      console.log('ID Token:', user.idToken)
+      this.service.googleAuth(user.idToken).subscribe(success => {
+        console.log('success', success);
+        this.success_data = success;
+        localStorage.clear();
+        this.service.saveTokens(this.success_data.tokens);
+        this.service.getUser().subscribe(data => {
+          console.log('userdata', data);
+          this.user = data;
+          if (this.user.role == 'patient') {
+            this.router.navigate(['/patient/home/'])
+          } else if (this.user.role == 'doctor') {
+            // navigaete to doctor home page
+          } else {
+            alert("There are a few steps to complete your registration.");
+            this.router.navigate(['/new-user/'])
+          }
+        })
+        
+        // if (data.role == 'patient') {
+        //   this.router.navigate(['/patient/home/'])
+        // }
+
+      }, error => {
+        console.log(error.error.error_message)
+        this.error_message = error.error.error_message;
+      });
+    })
   }
 
   authenticate() {
@@ -31,10 +68,9 @@ export class LoginComponent implements OnInit {
     this.service.login(data).then(res => {
       if (res.ok) {
         res.json().then(data => {
-          localStorage.removeItem('token');
-          localStorage.setItem('access_token', data.tokens.access);
-          localStorage.setItem('refresh_token', data.tokens.refresh);
-          if(data.role == 'patient') {
+          localStorage.clear();
+          this.service.saveTokens(this.success_data.tokens);
+          if (data.role == 'patient') {
             this.router.navigate(['/patient/home/'])
           }
         });

@@ -17,6 +17,12 @@ import { PtUpdateUserComponent } from './components/patient/pt-update-user/pt-up
 import { PtUpdateMemberComponent } from './components/patient/pt-update-member/pt-update-member.component';
 import { PtBlogsComponent } from './components/patient/pt-blogs/pt-blogs.component';
 import { PtBlogDetailComponent } from './components/patient/pt-blog-detail/pt-blog-detail.component';
+import {
+  GoogleLoginProvider,
+  SocialAuthServiceConfig,
+  SocialLoginModule
+} from '@abacritt/angularx-social-login';
+import { UserDetailsComponent } from './components/auth/user-details/user-details.component'
 
 @NgModule({
   declarations: [
@@ -32,18 +38,37 @@ import { PtBlogDetailComponent } from './components/patient/pt-blog-detail/pt-bl
     PtUpdateMemberComponent,
     PtBlogsComponent,
     PtBlogDetailComponent,
+    UserDetailsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SocialLoginModule,
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
+    },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '1050376602770-de8rit49ij0pim0qfs1nj5cpj4mbuobn.apps.googleusercontent.com'
+            )
+          }
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
     }
   ],
   bootstrap: [AppComponent]

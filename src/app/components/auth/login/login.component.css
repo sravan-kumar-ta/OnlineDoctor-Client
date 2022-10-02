@@ -1,0 +1,12 @@
+.horizontal-line-text {
+    width: 100%;
+    text-align: center;
+    border-bottom: 2px solid #e7e7e7;
+    line-height: 0.1rem;
+    margin: 25px 0 30px 0;
+}
+
+.horizontal-line-text>span {
+    background: white;
+    padding: 0 10px;
+}

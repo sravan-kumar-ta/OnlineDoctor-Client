@@ -41,6 +41,11 @@ export class AuthService {
     return this.http.get(url);
   }
 
+  updateUser(data: any) {
+    let url = `${this.domain}/user/`
+    return this.http.patch(url, data, { observe: 'response' });
+  }
+
   isLoggedIn() {
     return localStorage.getItem('access_token') != null;
   }
@@ -70,5 +75,10 @@ export class AuthService {
     alert('Your session expired');
     localStorage.clear();
     this.router.navigate(['']);
+  }
+
+  googleAuth(token: string){
+    let url = `${this.domain}/google/`;
+    return this.http.post(url, {'auth_token': token})
   }
 }

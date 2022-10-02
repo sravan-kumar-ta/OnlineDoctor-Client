@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
+import { UserDetailsComponent } from './components/auth/user-details/user-details.component';
 import { PtBlogDetailComponent } from './components/patient/pt-blog-detail/pt-blog-detail.component';
 import { PtBlogsComponent } from './components/patient/pt-blogs/pt-blogs.component';
 import { PtDoctorsComponent } from './components/patient/pt-doctors/pt-doctors.component';
@@ -14,6 +15,7 @@ import { AuthGuard } from './shared/auth.guard';
 const routes: Routes = [
   {path:'', component:LoginComponent},
   {path:'register', component:RegisterComponent},
+  {path:'new-user', component:UserDetailsComponent},
 
   {
     path: 'patient',

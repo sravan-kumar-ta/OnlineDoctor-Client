@@ -1,0 +1,44 @@
+<div class="container px-4 py-5" id="icon-grid">
+    <h2 class="pb-2 border-bottom">Update user</h2>
+
+    <div class="row px-5">
+        <div class="col-lg-4 col-md-8 border rounded py-3">
+            <form [formGroup]="userForm" (ngSubmit)="updateUser()">
+                <table class="m-auto" cellpadding="5">
+                    <tr class="d-flex justify-content-between align-items-center">
+                        <td>Firstname</td>
+                        <td><input placeholder="Enter first name" required type="text" formControlName="first_name" class="form-control"></td>
+                    </tr>
+                    <tr class="d-flex justify-content-between align-items-center">
+                        <td>Lastname</td>
+                        <td><input placeholder="Enter last name"  required type="text" formControlName="last_name" class="form-control">
+                        </td>
+                    </tr>
+                    <tr class="d-flex justify-content-between align-items-center">
+                        <td>Gender</td>
+                        <td>
+                            <select formControlName="gender" class="form-select">
+                                <option value="choice" disabled>Select gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="d-flex justify-content-between align-items-center">
+                        <td>Registering as a..</td>
+                        <td>
+                            <select formControlName="role" class="form-select">
+                                <option value="doctor">Doctor</option>
+                                <option value="patient" selected>Patient</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <hr>
+                    <tr class="text-center">
+                        <td colspan="2"><button type="submit" class="btn btn-primary">Submit</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
