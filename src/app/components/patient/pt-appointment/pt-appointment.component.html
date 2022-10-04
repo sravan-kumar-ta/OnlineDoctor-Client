@@ -1,0 +1,67 @@
+<app-pt-navbar></app-pt-navbar>
+
+<div class="container px-4 py-2" id="icon-grid">
+    <div class="d-flex">
+        <h2 class="pb-2 border-bottom">Appointment with Dr.{{ doctor?.details.get_full_name }}</h2>
+
+    </div>
+    <div class="row px-5">
+        <div class="d-flex align-items-center justify-content-center">
+            <h5 class="text-center">Select a date</h5>
+            <small class="text-warning">(You can choose within 10 days from tomorrow)</small> :
+        </div>
+        <!-- date querying -->
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <input class="form-control" type="date" min="{{ today | date:'yyyy-MM-dd' }}" #dateInput>
+                <small class="text-danger" style="display: none;">Please
+                    select a date</small>
+            </div>
+            <div class="text-center">
+                <button (click)="getTime(dateInput.value)" class="btn btn-outline-info my-2">
+                    Check Availability
+                </button>
+                <div class="col-md-4 offset-md-4 mt-4" *ngIf="dateDisplay">
+                    <label for="select-date">Select a date:</label>
+                    <select class="form-select" aria-label="Default select example" [(ngModel)]="timeInput">
+                        <option selected disabled>Open this and select a timeslot</option>
+                        <option *ngFor="let slot of timeSlots" [value]="slot.start">{{slot.start}} to {{slot.end}}</option>
+                    </select>
+                    <button (click)="makePayment(dateInput.value)" class="btn btn-outline-info my-2">
+                        Make Payment
+                    </button>
+                </div>
+            </div>
+
+            <div class="card border-primary shadow m-auto w-25 p-0" *ngIf="paymetDisplay">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title text-center">Selected date and Time</h5>
+                </div>
+
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-center">
+                            <b class="mx-2">Date:</b>
+                            <!-- <b class="text-primary">5th October 2022</b> -->
+                            <!-- <b class="text-primary">{{ dateInput | date:'medium' }}</b> -->
+                            <b class="text-primary">{{ dateInput.value | date }}</b>
+                        </li>
+                        <li class="list-group-item text-center">
+                            <b class="mx-2">Time:</b>
+                            <b class="text-primary">{{ timeInput }} to 30min.</b>
+                        </li>
+                        <li class="list-group-item text-center">
+                            <b class="mx-2">Doctor fee:</b>
+                            <b class="text-primary">{{ doctorFee }} &#8377;</b>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-footer text-center">
+                    <button class="btn btn-outline-success">Proceed to Payment</button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,7 +22,8 @@ import {
   SocialAuthServiceConfig,
   SocialLoginModule
 } from '@abacritt/angularx-social-login';
-import { UserDetailsComponent } from './components/auth/user-details/user-details.component'
+import { UserDetailsComponent } from './components/auth/user-details/user-details.component';
+import { PtAppointmentComponent } from './components/patient/pt-appointment/pt-appointment.component'
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { UserDetailsComponent } from './components/auth/user-details/user-detail
     PtBlogsComponent,
     PtBlogDetailComponent,
     UserDetailsComponent,
+    PtAppointmentComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +48,7 @@ import { UserDetailsComponent } from './components/auth/user-details/user-detail
     ReactiveFormsModule,
     HttpClientModule,
     SocialLoginModule,
+    FormsModule,
   ],
   providers: [
     {

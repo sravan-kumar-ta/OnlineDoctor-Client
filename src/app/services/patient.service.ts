@@ -75,4 +75,15 @@ export class PatientService {
     return this.http.get(url);
   }
 
+  //appointment
+  getDoctor(id: number){
+    let url = `${this.domain}/doctor/${id}/`
+    return this.http.get(url);
+  }
+
+  getTimes(id: number, date: string){
+    let url = `${this.domain}/times/${id}/${date}/`
+    return this.http.get(url);
+  }
+
 }

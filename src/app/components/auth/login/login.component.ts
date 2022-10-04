@@ -69,7 +69,8 @@ export class LoginComponent implements OnInit {
       if (res.ok) {
         res.json().then(data => {
           localStorage.clear();
-          this.service.saveTokens(this.success_data.tokens);
+          localStorage.setItem('access_token', data.tokens.access);
+          localStorage.setItem('refresh_token', data.tokens.refresh);
           if (data.role == 'patient') {
             this.router.navigate(['/patient/home/'])
           }

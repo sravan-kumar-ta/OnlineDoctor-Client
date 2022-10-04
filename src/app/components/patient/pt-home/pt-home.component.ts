@@ -15,6 +15,7 @@ export class PtHomeComponent implements OnInit {
   ngOnInit(): void {
     this.services.getSpecialities().subscribe(data => {
       this.allCategories = data;
+      console.log(data)
     })
   }
 
