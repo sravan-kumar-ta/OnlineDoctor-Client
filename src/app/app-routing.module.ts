@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { UserDetailsComponent } from './components/auth/user-details/user-details.component';
+import { PtAllAppointmentsComponent } from './components/patient/pt-all-appointments/pt-all-appointments.component';
 import { PtAppointmentComponent } from './components/patient/pt-appointment/pt-appointment.component';
 import { PtBlogDetailComponent } from './components/patient/pt-blog-detail/pt-blog-detail.component';
 import { PtBlogsComponent } from './components/patient/pt-blogs/pt-blogs.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
       {path:'blogs', component:PtBlogsComponent},
       {path:'blogs/:id', component:PtBlogDetailComponent},
       {path:'appointment/:id', component:PtAppointmentComponent},
+      {path:'appointments', component:PtAllAppointmentsComponent},
     ], canActivate: [AuthGuard]
   },
 ];

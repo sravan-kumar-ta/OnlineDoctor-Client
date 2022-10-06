@@ -75,7 +75,7 @@ export class PatientService {
     return this.http.get(url);
   }
 
-  //appointment
+  //create appointment
   getDoctor(id: number){
     let url = `${this.domain}/doctor/${id}/`
     return this.http.get(url);
@@ -94,6 +94,22 @@ export class PatientService {
       'time': time,
     }
     return this.http.post(url, body)
+  }
+
+  //get appointments
+  getCompletedApps(){
+    let url = `${this.domain}/appointment/get_completed/`
+    return this.http.get(url)
+  }
+
+  getActiveApps(){
+    let url = `${this.domain}/appointment/get_active/`
+    return this.http.get(url)
+  }
+
+  getUpcomingApps(){
+    let url = `${this.domain}/appointment/get_upcoming/`
+    return this.http.get(url)
   }
 
 }
