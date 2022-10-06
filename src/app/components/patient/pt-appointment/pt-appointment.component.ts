@@ -1,7 +1,7 @@
-import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PatientService } from 'src/app/services/patient.service';
+import { render } from 'creditcardpayments/creditCardPayments'
 
 @Component({
   selector: 'app-pt-appointment',
@@ -10,18 +10,18 @@ import { PatientService } from 'src/app/services/patient.service';
 })
 export class PtAppointmentComponent implements OnInit {
 
-  doc_id: number = 0
+  doc_id: number = 0;
   doctor: any;
   today: Date = new Date();
   dateDisplay: boolean = false;
-  paymetDisplay: boolean = false;
   response: any;
   timeSlots: any[] = [];
   dateInput: any;
   timeInput: any;
-  doctorFee: number = 0;
+  element: any;
+  app_date: string = '';
 
-  constructor(private route: ActivatedRoute, private service: PatientService) { }
+  constructor(private route: ActivatedRoute, private service: PatientService, private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(obj => {
@@ -30,14 +30,15 @@ export class PtAppointmentComponent implements OnInit {
 
     this.service.getDoctor(this.doc_id).subscribe(data => {
       this.doctor = data;
-      this.doctorFee = this.doctor.charge;
     })
 
   }
 
   getTime(date: string) {
+    console.log('calling');
+    this.timeSlots = []
+    this.app_date = date;
     this.service.getTimes(this.doc_id, date).subscribe(data => {
-      this.timeSlots = []
       this.response = data
       this.response = this.response.slots
 
@@ -45,14 +46,40 @@ export class PtAppointmentComponent implements OnInit {
       Object.entries(this.response).forEach(([, value]) => {
         this.timeSlots.push(value)
       });
-      this.dateDisplay = true
+      this.dateDisplay = true;
+      this.element = document.getElementById('paymentDIV')
+      this.element.style.display = 'none';
     })
   }
 
   makePayment(date: string){
+    this.element = document.getElementById('paymentDIV')
     this.dateInput = new Date(date);
     this.dateDisplay = false;
-    this.paymetDisplay = true;
+    this.element.style.display = 'block';
+
+    if(document.getElementById('paypalButton')){
+      document.getElementById('paypalButton')?.remove();
+    }
+
+    const paypal_btn: any = document.createElement('div');
+    paypal_btn.setAttribute("id", "paypalButton");
+    const paypal_box: any = document.getElementById('payapl-box');
+    paypal_box?.appendChild(paypal_btn);
+
+    render(
+      {
+        id: '#paypalButton',
+        currency: 'USD',
+        value: this.doctor?.charge,
+        onApprove: (res) => {
+          this.service.createAppointment(this.doc_id, this.app_date, this.timeInput).subscribe(() => {
+            this.router.navigate(['patient/home']);
+            alert("Appointment created")
+          })
+        },
+      }
+    )
   }
 
 }

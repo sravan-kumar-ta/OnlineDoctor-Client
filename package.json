@@ -21,6 +21,7 @@
     "@angular/router": "^14.0.0",
     "bootstrap": "^5.2.1",
     "bootstrap-jquery": "^3.3.2",
+    "creditcardpayments": "^1.0.3",
     "jquery": "^3.6.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

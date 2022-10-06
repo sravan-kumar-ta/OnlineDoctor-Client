@@ -33,7 +33,7 @@
                 </div>
             </div>
 
-            <div class="card border-primary shadow m-auto w-25 p-0" *ngIf="paymetDisplay">
+            <div class="card border-primary shadow m-auto w-25 p-0" [style.display]="'none'" id="paymentDIV">
                 <div class="card-header bg-primary text-white">
                     <h5 class="card-title text-center">Selected date and Time</h5>
                 </div>
@@ -42,8 +42,6 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item text-center">
                             <b class="mx-2">Date:</b>
-                            <!-- <b class="text-primary">5th October 2022</b> -->
-                            <!-- <b class="text-primary">{{ dateInput | date:'medium' }}</b> -->
                             <b class="text-primary">{{ dateInput.value | date }}</b>
                         </li>
                         <li class="list-group-item text-center">
@@ -52,13 +50,11 @@
                         </li>
                         <li class="list-group-item text-center">
                             <b class="mx-2">Doctor fee:</b>
-                            <b class="text-primary">{{ doctorFee }} &#8377;</b>
+                            <b class="text-primary">{{ doctor?.charge }} &#8377;</b>
                         </li>
                     </ul>
                 </div>
-                <div class="card-footer text-center">
-                    <button class="btn btn-outline-success">Proceed to Payment</button>
-                </div>
+                <div class="card-footer text-center" id="payapl-box"></div>
             </div>
         </div>
 

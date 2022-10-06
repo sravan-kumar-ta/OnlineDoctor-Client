@@ -86,4 +86,14 @@ export class PatientService {
     return this.http.get(url);
   }
 
+  createAppointment(doc_id: number, date: string, time: string) {
+    let url = `${this.domain}/appointment/`
+    let body = {
+      'doc_id': doc_id,
+      'date': date,
+      'time': time,
+    }
+    return this.http.post(url, body)
+  }
+
 }
