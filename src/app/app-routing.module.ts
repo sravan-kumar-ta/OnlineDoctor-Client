@@ -3,6 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { UserDetailsComponent } from './components/auth/user-details/user-details.component';
+import { DrDetailsaddComponent } from './components/doctor/dr-detailsadd/dr-detailsadd.component';
+import { DrProfileComponent } from './components/doctor/dr-profile/dr-profile.component';
+import { DrUserupdateComponent } from './components/doctor/dr-userupdate/dr-userupdate.component';
 import { PtAllAppointmentsComponent } from './components/patient/pt-all-appointments/pt-all-appointments.component';
 import { PtAppointmentComponent } from './components/patient/pt-appointment/pt-appointment.component';
 import { PtBlogDetailComponent } from './components/patient/pt-blog-detail/pt-blog-detail.component';
@@ -33,6 +36,14 @@ const routes: Routes = [
       {path:'appointments', component:PtAllAppointmentsComponent},
     ], canActivate: [AuthGuard]
   },
+  {
+    path: 'doctor',
+    children: [
+      {path:'profile', component:DrProfileComponent},
+      {path:'update-doctor', component:DrUserupdateComponent},
+      {path:'add-doctor-details', component:DrDetailsaddComponent},
+    ], canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({

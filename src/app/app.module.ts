@@ -24,7 +24,10 @@ import {
 } from '@abacritt/angularx-social-login';
 import { UserDetailsComponent } from './components/auth/user-details/user-details.component';
 import { PtAppointmentComponent } from './components/patient/pt-appointment/pt-appointment.component';
-import { PtAllAppointmentsComponent } from './components/patient/pt-all-appointments/pt-all-appointments.component'
+import { PtAllAppointmentsComponent } from './components/patient/pt-all-appointments/pt-all-appointments.component';
+import { DrProfileComponent } from './components/doctor/dr-profile/dr-profile.component';
+import { DrUserupdateComponent } from './components/doctor/dr-userupdate/dr-userupdate.component';
+import { DrDetailsaddComponent } from './components/doctor/dr-detailsadd/dr-detailsadd.component'
 
 @NgModule({
   declarations: [
@@ -43,6 +46,9 @@ import { PtAllAppointmentsComponent } from './components/patient/pt-all-appointm
     UserDetailsComponent,
     PtAppointmentComponent,
     PtAllAppointmentsComponent,
+    DrProfileComponent,
+    DrUserupdateComponent,
+    DrDetailsaddComponent,
   ],
   imports: [
     BrowserModule,

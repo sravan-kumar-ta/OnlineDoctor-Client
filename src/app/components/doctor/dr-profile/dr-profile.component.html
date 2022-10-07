@@ -1,0 +1,287 @@
+<app-dr-navbar></app-dr-navbar>
+
+<div class="container px-4 py-2" id="icon-grid">
+    <div class="d-flex">
+        <h2 class="pb-2 border-bottom">Profile</h2>
+    </div>
+    <div class="row px-5">
+        <div class="col-lg-4 px-md-3 mt-3">
+            <h5 class="text-center border-bottom border-4 px-3 py-2 shadow rounded border-warning">Account</h5>
+            <div>
+                <table cellpadding="5" class="m-auto">
+                    <tr class="d-flex justify-content-between">
+                        <td>Name:</td>
+                        <td class="text-primary">{{ user?.first_name }} {{ user?.last_name }}</td>
+                    </tr>
+                    <tr class="d-flex justify-content-between">
+                        <td>Username:</td>
+                        <td class="text-primary">{{ user?.username }}</td>
+                    </tr>
+                    <tr class="d-flex justify-content-between">
+                        <td>Gender:</td>
+                        <td style="text-transform: capitalize;" class="text-primary">{{ user?.gender }}</td>
+                    </tr>
+                    <tr class="d-flex justify-content-between">
+                        <td>Email:</td>
+                        <td class="text-primary">{{ user?.email }}</td>
+                    </tr>
+                </table>
+                <a href="doctor/update-doctor/" class="text-decoration-none">
+                    <h6 class="text-center border mx-5 px-3 py-2 shadow rounded border-info">Update</h6>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-4 px-md-3 mt-3">
+            <h5 class="text-center border-bottom border-4 px-3 py-2 shadow rounded border-warning">Details</h5>
+            <div *ngIf="doctor">
+                <table cellpadding="5" class="m-auto">
+                    <tr class="d-flex justify-content-between">
+                        <td>Specialized in:</td>
+                        <td class="text-primary">{{ doctor?.specialized_in.title }}</td>
+                    </tr>
+                    <tr class="d-flex justify-content-between">
+                        <td>Charge for 30mint.:</td>
+                        <td class="text-primary">{{ doctor?.charge }} &#8377;</td>
+                    </tr>
+                    <tr class="d-flex justify-content-between">
+                        <td>PayPal id.:</td>
+                        <td class="text-primary">{{ doctor?.paypal_account }}</td>
+                    </tr>
+                </table>
+                <div class="mt-3">
+                    <a href="" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <h6 class="text-center border mx-5 px-3 py-2 shadow rounded border-info">Update details</h6>
+                    </a>
+                </div>
+            </div>
+            <div *ngIf="!doctor">
+                <p class="text-danger text-center">Not updated yet</p>
+            </div>
+            <hr>
+        </div>
+        <div class="col-lg-4 px-md-3 mt-3">
+            <h5 class="text-center border-bottom border-4 px-3 py-2 shadow rounded border-warning">Available times</h5>
+            <div *ngIf="doctor">
+                <table cellpadding="5" class="m-auto">
+                    <tr class="d-flex justify-content-between" *ngIf="doctor?.sun_start">
+                        <td>Sunday:</td>
+                        <td class="text-primary text-uppercase">
+                            {{ doctor?.sun_start }}
+                            <span class="text-dark text-lowercase">to</span>
+                            {{ doctor?.sun_end }}
+                        </td>
+                    </tr>
+                    <tr class="d-flex justify-content-between" *ngIf="doctor?.mon_start">
+                        <td>Monday:</td>
+                        <td class="text-primary text-uppercase">
+                            {{ doctor?.mon_start }}
+                            <span class="text-dark text-lowercase">to</span>
+                            {{ doctor?.mon_end }}
+                        </td>
+                    </tr>
+                    <tr class="d-flex justify-content-between" *ngIf="doctor?.tue_start">
+                        <td>Tuesday:</td>
+                        <td class="text-primary text-uppercase">
+                            {{ doctor?.tue_start }}
+                            <span class="text-dark text-lowercase">to</span>
+                            {{ doctor?.tue_end }}
+                        </td>
+                    </tr>
+                    <tr class="d-flex justify-content-between" *ngIf="doctor?.wed_start">
+                        <td>Wednesday:</td>
+                        <td class="text-primary text-uppercase">
+                            {{ doctor?.wed_start }}
+                            <span class="text-dark text-lowercase">to</span>
+                            {{ doctor?.wed_end }}
+                        </td>
+                    </tr>
+                    <tr class="d-flex justify-content-between" *ngIf="doctor?.thu_start">
+                        <td>Thursday:</td>
+                        <td class="text-primary text-uppercase">
+                            {{ doctor?.thu_start }}
+                            <span class="text-dark text-lowercase">to</span>
+                            {{ doctor?.thu_end }}
+                        </td>
+                    </tr>
+                    <tr class="d-flex justify-content-between" *ngIf="doctor?.fri_start">
+                        <td>Friday:</td>
+                        <td class="text-primary text-uppercase">
+                            {{ doctor?.fri_start }}
+                            <span class="text-dark text-lowercase">to</span>
+                            {{ doctor?.fri_end }}
+                        </td>
+                    </tr>
+                    <tr class="d-flex justify-content-between" *ngIf="doctor?.sat_start">
+                        <td>Saturday:</td>
+                        <td class="text-primary text-uppercase">
+                            {{ doctor?.sat_start }}
+                            <span class="text-dark text-lowercase">to</span>
+                            {{ doctor?.sat_end }}
+                        </td>
+                    </tr>
+                </table>
+                <div class="mt-3">
+                    <a href="" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#availableTimeModal">
+                        <h6 class="text-center border mx-5 px-3 py-2 shadow rounded border-info">Update details</h6>
+                    </a>
+                </div>
+            </div>
+            <div *ngIf="!doctor">
+                <p class="text-danger text-center">Not updated yet</p>
+            </div>
+            <hr>
+        </div>
+    </div>
+
+    <!--modal start    -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">You can update details from here</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="detailsForm" (ngSubmit)="updateDoctor()">
+                        <table class="m-auto" cellpadding="5">
+                            <tr class="d-flex justify-content-between align-items-center">
+                                <td>Specialized in:</td>
+                                <td>
+                                    <select formControlName="specialized_in_id" class="form-control">
+                                        <option *ngFor="let spc of specialities" [value]="spc.id">
+                                            {{ spc.title }}
+                                        </option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr class="d-flex justify-content-between align-items-center">
+                                <td>Charge</td>
+                                <td><input formControlName="charge" type="number" class="form-control" required></td>
+                            </tr>
+                            <tr class="d-flex justify-content-between align-items-center">
+                                <td>Paypal</td>
+                                <td><input formControlName="paypal_account" class="form-control" required></td>
+                            </tr>
+                        </table>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--modal end    -->
+
+    <!--modal start    -->
+    <div class="modal fade" id="availableTimeModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="availableTimeModalLabel">You can update details from here</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- {% if doctor %} -->
+                    <form [formGroup]="detailsForm" (submit)="updateDoctor()">
+                        <table class="m-auto" cellpadding="5">
+                            <th colspan="3" class="text-center">-----Your Availability-----</th>
+                            <tr>
+                                <th>Day</th>
+                                <th>Start Time</th>
+                                <th>End Time</th>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Sunday
+                                </td>
+                                <td>
+                                    <input type="time" formControlName="sun_start">
+                                </td>
+                                <td>
+                                    <input type="time" formControlName="sun_end">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Monday
+                                </td>
+                                <td>
+                                    <input type="time" formControlName="mon_start">
+                                </td>
+                                <td>
+                                    <input type="time" formControlName="mon_end">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Tuesday
+                                </td>
+                                <td>
+                                    <input type="time" formControlName="tue_start">
+                                </td>
+                                <td>
+                                    <input type="time" formControlName="tue_end">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Wednesday
+                                </td>
+                                <td>
+                                    <input type="time" formControlName="wed_start">
+                                </td>
+                                <td>
+                                    <input type="time" formControlName="wed_end">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Thursday
+                                </td>
+                                <td>
+                                    <input type="time" formControlName="thu_start">
+                                </td>
+                                <td>
+                                    <input type="time" formControlName="thu_end">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Friday
+                                </td>
+                                <td>
+                                    <input type="time" formControlName="fri_start">
+                                </td>
+                                <td>
+                                    <input type="time" formControlName="fri_end">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Saturday
+                                </td>
+                                <td>
+                                    <input type="time" formControlName="sat_start">
+                                </td>
+                                <td>
+                                    <input type="time" formControlName="sat_end">
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Update</button>
+                        </div>
+                    </form>
+                    <!-- {% endif %} -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--modal end    -->
+</div>

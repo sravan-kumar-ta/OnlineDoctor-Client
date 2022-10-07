@@ -1,0 +1,123 @@
+<app-dr-navbar></app-dr-navbar>
+
+<div class="border rounded px-4 py-2 m-auto w-25">
+    <h4 class="text-center">Add doctor details</h4>
+    <hr>
+    <form [formGroup]="detailsForm" (submit)="addDoctor()">
+        <table class="m-auto" cellpadding="5">
+            <tr>
+                <td><b>Specialized in:</b></td>
+                <td>
+                    <select formControlName="specialized_in_id" class="form-control">
+                        <option *ngFor="let spc of specialities" [value]="spc.id">
+                            {{ spc.title }}
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Charge(30min):</b></td>
+                <td><input formControlName="charge" type="number" class="form-control" required></td>
+            </tr>
+            <tr>
+                <td><b>Paypal:</b></td>
+                <td><input formControlName="paypal_account" class="form-control" type="email" required></td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th colspan="3" class="text-center">-----Your Availability-----</th>
+            </tr>
+            <tr>
+                <th>Day</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+            </tr>
+
+            <tr>
+                <td>
+                    Sunday
+                </td>
+                <td>
+                    <input class="form-control" type="time" formControlName="sun_start">
+                </td>
+                <td>
+                    <input class="form-control" type="time" formControlName="sun_end">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Monday
+                </td>
+                <td>
+                    <input class="form-control" type="time" formControlName="mon_start">
+                </td>
+                <td>
+                    <input class="form-control" type="time" formControlName="mon_end">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Tuesday
+                </td>
+                <td>
+                    <input class="form-control" type="time" formControlName="tue_start">
+                </td>
+                <td>
+                    <input class="form-control" type="time" formControlName="tue_end">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Wednesday
+                </td>
+                <td>
+                    <input class="form-control" type="time" formControlName="wed_start">
+                </td>
+                <td>
+                    <input class="form-control" type="time" formControlName="wed_end">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Thursday
+                </td>
+                <td>
+                    <input class="form-control" type="time" formControlName="thu_start">
+                </td>
+                <td>
+                    <input class="form-control" type="time" formControlName="thu_end">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Friday
+                </td>
+                <td>
+                    <input class="form-control" type="time" formControlName="fri_start">
+                </td>
+                <td>
+                    <input class="form-control" type="time" formControlName="fri_end">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Saturday
+                </td>
+                <td>
+                    <input class="form-control" type="time" formControlName="sat_start">
+                </td>
+                <td>
+                    <input class="form-control" type="time" formControlName="sat_end">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" class="text-center">
+                    <hr>
+                    <button type="submit" class="btn btn-primary px-5">Save</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>

@@ -33,26 +33,17 @@ export class LoginComponent implements OnInit {
     this.authService.authState.subscribe(user => {
       console.log('ID Token:', user.idToken)
       this.service.googleAuth(user.idToken).subscribe(success => {
-        console.log('success', success);
         this.success_data = success;
         localStorage.clear();
         this.service.saveTokens(this.success_data.tokens);
         this.service.getUser().subscribe(data => {
-          console.log('userdata', data);
           this.user = data;
           if (this.user.role == 'patient') {
             this.router.navigate(['/patient/home/'])
           } else if (this.user.role == 'doctor') {
-            // navigaete to doctor home page
-          } else {
-            alert("There are a few steps to complete your registration.");
-            this.router.navigate(['/new-user/'])
+            this.router.navigate(['/doctor/profile/'])
           }
         })
-        
-        // if (data.role == 'patient') {
-        //   this.router.navigate(['/patient/home/'])
-        // }
 
       }, error => {
         console.log(error.error.error_message)
@@ -73,6 +64,11 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('refresh_token', data.tokens.refresh);
           if (data.role == 'patient') {
             this.router.navigate(['/patient/home/'])
+          } else if (data.role == 'doctor') {
+            this.router.navigate(['/doctor/profile/'])
+          } else {
+            alert("There are a few steps to complete your registration.");
+            this.router.navigate(['/new-user/'])
           }
         });
       } else {
