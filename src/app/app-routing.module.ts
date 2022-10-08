@@ -6,6 +6,7 @@ import { UserDetailsComponent } from './components/auth/user-details/user-detail
 import { DrDetailsaddComponent } from './components/doctor/dr-detailsadd/dr-detailsadd.component';
 import { DrProfileComponent } from './components/doctor/dr-profile/dr-profile.component';
 import { DrUserupdateComponent } from './components/doctor/dr-userupdate/dr-userupdate.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { PtAllAppointmentsComponent } from './components/patient/pt-all-appointments/pt-all-appointments.component';
 import { PtAppointmentComponent } from './components/patient/pt-appointment/pt-appointment.component';
 import { PtBlogDetailComponent } from './components/patient/pt-blog-detail/pt-blog-detail.component';
@@ -44,7 +45,8 @@ const routes: Routes = [
       {path:'update-doctor', component:DrUserupdateComponent},
       {path:'add-doctor-details', component:DrDetailsaddComponent},
     ], canActivate: [DoctorGuard]
-  }
+  },
+  {path: '**', pathMatch: 'full', component: PageNotFoundComponent}
 ];
 
 @NgModule({
