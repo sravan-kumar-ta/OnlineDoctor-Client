@@ -7,14 +7,6 @@ import { Injectable } from '@angular/core';
 export class PatientService {
 
   domain: string = 'http://127.0.0.1:8000/api'
-  // url: string = ''
-  // options: any = {
-  //   method: 'GET',
-  //   body: '',
-  //   headers: {
-  //     'Content-type': 'application/json; charset=UTF-8'
-  //   }
-  // }
 
   constructor(private http: HttpClient) { }
 

@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-
+  
   domain: string = 'http://127.0.0.1:8000/api'
   url: string = ''  
   options: any = {
@@ -45,11 +45,7 @@ export class AuthService {
     let url = `${this.domain}/user/`
     return this.http.patch(url, data, { observe: 'response' });
   }
-
-  isLoggedIn() {
-    return localStorage.getItem('access_token') != null;
-  }
-
+  
   getAccessToken() {
     return localStorage.getItem('access_token') || '';
   }

@@ -15,7 +15,8 @@ import { PtHomeComponent } from './components/patient/pt-home/pt-home.component'
 import { PtProfileComponent } from './components/patient/pt-profile/pt-profile.component';
 import { PtUpdateMemberComponent } from './components/patient/pt-update-member/pt-update-member.component';
 import { PtUpdateUserComponent } from './components/patient/pt-update-user/pt-update-user.component';
-import { AuthGuard } from './shared/auth.guard';
+import { DoctorGuard } from './shared/doctor.guard';
+import { PatientGuard } from './shared/patient.guard';
 
 const routes: Routes = [
   {path:'', component:LoginComponent},
@@ -34,7 +35,7 @@ const routes: Routes = [
       {path:'blogs/:id', component:PtBlogDetailComponent},
       {path:'appointment/:id', component:PtAppointmentComponent},
       {path:'appointments', component:PtAllAppointmentsComponent},
-    ], canActivate: [AuthGuard]
+    ], canActivate: [PatientGuard]
   },
   {
     path: 'doctor',
@@ -42,7 +43,7 @@ const routes: Routes = [
       {path:'profile', component:DrProfileComponent},
       {path:'update-doctor', component:DrUserupdateComponent},
       {path:'add-doctor-details', component:DrDetailsaddComponent},
-    ], canActivate: [AuthGuard]
+    ], canActivate: [DoctorGuard]
   }
 ];
 
