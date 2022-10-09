@@ -1,8 +1,9 @@
-<app-pt-navbar></app-pt-navbar>
+<app-dr-navbar></app-dr-navbar>
 
 <div class="container px-4 py-2" id="icon-grid">
     <div class="d-flex align-items-center">
         <h2 class="pb-2 border-bottom">Blogs</h2>
+        <a href="" class="mx-3 text-decoration-none btn btn-outline-primary">Create a new blog</a>
     </div>
 
     <div class="row mb-2">
@@ -44,7 +45,7 @@
         <li class="page-item disabled" *ngIf="prevPage == 0">
             <a class="page-link">&laquo; Previous</a>
         </li>
-
+        
         <li class="page-item">
             <a class="page-link text-success">page {{page}} out of {{ totalPages }}</a>
         </li>

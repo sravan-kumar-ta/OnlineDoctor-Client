@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { PatientService } from 'src/app/services/patient.service';
 
 @Component({
-  selector: 'app-pt-blogs',
-  templateUrl: './pt-blogs.component.html',
-  styleUrls: ['./pt-blogs.component.css']
+  selector: 'app-dr-blogs',
+  templateUrl: './dr-blogs.component.html',
+  styleUrls: ['./dr-blogs.component.css']
 })
-export class PtBlogsComponent implements OnInit {
+export class DrBlogsComponent implements OnInit {
 
   posts: any
   response: any;

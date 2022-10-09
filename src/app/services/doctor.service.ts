@@ -45,4 +45,10 @@ export class DoctorService {
     let url =  `${this.domain}/appointments/completed/`
     return this.http.get(url);
   }
+
+  //Blogs
+  getMyBlogs(pageNumber: number) {
+    let url =  `${this.domain}/posts/get_my_posts/`
+    return this.http.get(url, {params:{page:pageNumber}});
+  }
 }

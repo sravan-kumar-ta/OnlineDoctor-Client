@@ -29,7 +29,9 @@ import { DrProfileComponent } from './components/doctor/dr-profile/dr-profile.co
 import { DrUserupdateComponent } from './components/doctor/dr-userupdate/dr-userupdate.component';
 import { DrDetailsaddComponent } from './components/doctor/dr-detailsadd/dr-detailsadd.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { DrAppointmentsComponent } from './components/doctor/dr-appointments/dr-appointments.component'
+import { DrAppointmentsComponent } from './components/doctor/dr-appointments/dr-appointments.component';
+import { DrBlogsComponent } from './components/doctor/dr-blogs/dr-blogs.component';
+import { DrMyBlogsComponent } from './components/doctor/dr-my-blogs/dr-my-blogs.component'
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { DrAppointmentsComponent } from './components/doctor/dr-appointments/dr-
     DrDetailsaddComponent,
     PageNotFoundComponent,
     DrAppointmentsComponent,
+    DrBlogsComponent,
+    DrMyBlogsComponent,
   ],
   imports: [
     BrowserModule,

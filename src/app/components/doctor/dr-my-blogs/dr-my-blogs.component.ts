@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { DoctorService } from 'src/app/services/doctor.service';
 import { PatientService } from 'src/app/services/patient.service';
 
 @Component({
-  selector: 'app-pt-blogs',
-  templateUrl: './pt-blogs.component.html',
-  styleUrls: ['./pt-blogs.component.css']
+  selector: 'app-dr-my-blogs',
+  templateUrl: './dr-my-blogs.component.html',
+  styleUrls: ['./dr-my-blogs.component.css']
 })
-export class PtBlogsComponent implements OnInit {
+export class DrMyBlogsComponent implements OnInit {
 
   posts: any
   response: any;
@@ -15,7 +16,7 @@ export class PtBlogsComponent implements OnInit {
   page: number = 1;
   totalPages: number = 0;
 
-  constructor(private service:PatientService) { }
+  constructor(private service:DoctorService) { }
 
   ngOnInit(): void {
     this.getPosts(this.page);
@@ -23,7 +24,7 @@ export class PtBlogsComponent implements OnInit {
 
   getPosts(page: number){
     this.page = page;
-    this.service.getAllBlogs(page).subscribe(data => {
+    this.service.getMyBlogs(page).subscribe(data => {
       this.response = data;
       this.posts = this.response.results;
 
@@ -41,5 +42,4 @@ export class PtBlogsComponent implements OnInit {
       this.totalPages = Math.ceil(this.response.count / 6);
     })
   }
-
 }
