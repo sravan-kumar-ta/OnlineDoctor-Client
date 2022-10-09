@@ -1,0 +1,42 @@
+<app-dr-navbar></app-dr-navbar>
+
+<div class="container px-4 py-2" id="icon-grid">
+    
+    <div class="d-flex align-items-center">
+        <h2 class="pb-2 border-bottom me-4">Appointments</h2>
+        <b>Filter:</b>
+        <button (click)="getUpcomingApps()" class="btn btn-primary btn-sm mx-2">Upcoming only</button>
+        <button (click)="getActiveApps()" class="btn btn-primary btn-sm mx-2">Active only</button>
+        <button (click)="getCompletedApps()" class="btn btn-primary btn-sm mx-2">Completed only</button>
+    </div>
+    <div class="row px-5">
+        <div class="col-lg-8 mt-3">
+            <table class="table table-striped" *ngIf="appointments?.length > 0">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Patient</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Time</th>
+                        <th scope="col" *ngIf="chat">Chat</th>
+                        <th scope="col" *ngIf="!chat">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let appointment of appointments; let i = index">
+                        <td>{{ i+1 }}</td>
+                        <td>{{ appointment.patient.get_full_name }}</td>
+                        <td>{{ appointment.date | date:'fullDate' }}</td>
+                        <td>{{ appointment.date_time_start | date:'shortTime' }}</td>
+                        <td *ngIf="chat">
+                            <a href="" class="btn btn-primary btn-sm">Open Chat</a>
+                        </td>
+                        <td *ngIf="!chat">{{ appointment.status }}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+            <p class="text-warning border p-3" *ngIf="appointments?.length == 0">No available appointments...!</p>
+        </div>
+    </div>
+</div>

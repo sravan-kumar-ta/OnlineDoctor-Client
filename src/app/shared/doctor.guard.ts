@@ -15,7 +15,6 @@ export class DoctorGuard implements CanActivate {
   canActivate() {
     return this.service.getUser().pipe(map((res) => {
       this.user = res;
-      console.log(this.user)
       if (this.user.role == 'doctor') {
         return true;
       }

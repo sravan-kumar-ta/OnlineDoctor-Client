@@ -29,4 +29,20 @@ export class DoctorService {
     let url =  `${this.domain}/doctor/`
     return this.http.post(url, data);
   }
+
+  // Appointments
+  upcomingAppointments( ) {
+    let url =  `${this.domain}/appointments/upcoming/`
+    return this.http.get(url);
+  }
+  
+  activeAppointments( ) {
+    let url =  `${this.domain}/appointments/active/`
+    return this.http.get(url);
+  }
+
+  completedAppointments( ) {
+    let url =  `${this.domain}/appointments/completed/`
+    return this.http.get(url);
+  }
 }

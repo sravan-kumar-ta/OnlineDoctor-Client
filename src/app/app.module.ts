@@ -28,7 +28,8 @@ import { PtAllAppointmentsComponent } from './components/patient/pt-all-appointm
 import { DrProfileComponent } from './components/doctor/dr-profile/dr-profile.component';
 import { DrUserupdateComponent } from './components/doctor/dr-userupdate/dr-userupdate.component';
 import { DrDetailsaddComponent } from './components/doctor/dr-detailsadd/dr-detailsadd.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component'
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { DrAppointmentsComponent } from './components/doctor/dr-appointments/dr-appointments.component'
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     DrUserupdateComponent,
     DrDetailsaddComponent,
     PageNotFoundComponent,
+    DrAppointmentsComponent,
   ],
   imports: [
     BrowserModule,

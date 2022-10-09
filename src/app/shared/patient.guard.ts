@@ -15,7 +15,6 @@ export class PatientGuard implements CanActivate {
   canActivate() {
     return this.service.getUser().pipe(map((res) => {
       this.user = res;
-      console.log(this.user)
       if (this.user.role == 'patient') {
         return true;
       }
