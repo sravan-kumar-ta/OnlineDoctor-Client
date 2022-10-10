@@ -31,7 +31,9 @@ import { DrDetailsaddComponent } from './components/doctor/dr-detailsadd/dr-deta
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { DrAppointmentsComponent } from './components/doctor/dr-appointments/dr-appointments.component';
 import { DrBlogsComponent } from './components/doctor/dr-blogs/dr-blogs.component';
-import { DrMyBlogsComponent } from './components/doctor/dr-my-blogs/dr-my-blogs.component'
+import { DrMyBlogsComponent } from './components/doctor/dr-my-blogs/dr-my-blogs.component';
+import { DrAddBlogComponent } from './components/doctor/dr-add-blog/dr-add-blog.component';
+import { DrBlogDetailComponent } from './components/doctor/dr-blog-detail/dr-blog-detail.component'
 
 @NgModule({
   declarations: [
@@ -57,6 +59,8 @@ import { DrMyBlogsComponent } from './components/doctor/dr-my-blogs/dr-my-blogs.
     DrAppointmentsComponent,
     DrBlogsComponent,
     DrMyBlogsComponent,
+    DrAddBlogComponent,
+    DrBlogDetailComponent,
   ],
   imports: [
     BrowserModule,

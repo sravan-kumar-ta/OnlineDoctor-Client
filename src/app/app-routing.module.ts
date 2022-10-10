@@ -3,7 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { UserDetailsComponent } from './components/auth/user-details/user-details.component';
+import { DrAddBlogComponent } from './components/doctor/dr-add-blog/dr-add-blog.component';
 import { DrAppointmentsComponent } from './components/doctor/dr-appointments/dr-appointments.component';
+import { DrBlogDetailComponent } from './components/doctor/dr-blog-detail/dr-blog-detail.component';
 import { DrBlogsComponent } from './components/doctor/dr-blogs/dr-blogs.component';
 import { DrDetailsaddComponent } from './components/doctor/dr-detailsadd/dr-detailsadd.component';
 import { DrMyBlogsComponent } from './components/doctor/dr-my-blogs/dr-my-blogs.component';
@@ -50,6 +52,8 @@ const routes: Routes = [
       {path:'appointments', component:DrAppointmentsComponent},
       {path:'blogs', component:DrBlogsComponent},
       {path:'my-blogs', component:DrMyBlogsComponent},
+      {path:'add-blog', component:DrAddBlogComponent},
+      {path:'blogs/:id', component:DrBlogDetailComponent},
     ], canActivate: [DoctorGuard]
   },
   {path: '**', pathMatch: 'full', component: PageNotFoundComponent}

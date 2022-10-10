@@ -3,7 +3,7 @@
 <div class="container px-4 py-2" id="icon-grid">
     <div class="d-flex align-items-center">
         <h2 class="pb-2 border-bottom">Blogs</h2>
-        <a href="" class="mx-3 text-decoration-none btn btn-outline-primary">Create a new blog</a>
+        <a href="doctor/add-blog" class="mx-3 text-decoration-none btn btn-outline-primary">Create a new blog</a>
     </div>
 
     <div class="row mb-2">
@@ -18,7 +18,7 @@
                     </div>
                     <p class="card-text mb-auto">{{ post.content | slice:0:100 }}</p>
                     <div class="d-flex justify-content-between">
-                        <a [routerLink]="['/', 'patient', 'blogs', post?.id]" class="stretched-link">Continue
+                        <a [routerLink]="['/', 'doctor', 'blogs', post?.id]" class="stretched-link">Continue
                             reading...</a>
                         <div class="d-flex">
                             <div class="mx-2 border-bottom border-info">
