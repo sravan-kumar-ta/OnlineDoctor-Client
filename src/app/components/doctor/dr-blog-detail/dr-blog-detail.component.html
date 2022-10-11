@@ -4,37 +4,55 @@
     <div class="d-flex position-absolute start-50 translate-middle mt-4">
     </div>
     <div class="row mx-2">
-        <div class="d-md-flex justify-content-around">
-            <div class="mx-2">
-                <h3>{{ post?.title }}</h3>
-                <p class="text-muted">by&nbsp;<span class="text-info">Dr&nbsp;{{ post?.author.first_name }}&nbsp;{{ post?.author.last_name }}</span></p>
-                <p class="text-muted">{{ post?.date | date:'mediumDate' }}</p>
-                <p class="text-muted">{{ total_likes }} users liked</p>
+        <form [formGroup]="updateForm">
+            <div class="d-md-flex justify-content-around">
+                <div class="mx-2">
+                    <h3 *ngIf="!updation">{{ post?.title }}</h3>
+                    <input *ngIf="updation" type="text" class="form-control" formControlName="title" autofocus>
+                    <p class="text-muted">by&nbsp;<span class="text-info">Dr&nbsp;{{ post?.author.first_name }}&nbsp;{{
+                            post?.author.last_name }}</span></p>
+                    <p class="text-muted">{{ post?.date | date:'mediumDate' }}</p>
+                    <p class="text-muted">{{ total_likes }} users liked</p>
+                    <div class="d-flex border p-2 align-items-center" *ngIf="updation">
+                        <p>Make this post public?</p>
+                        <div class="form-check form-switch mx-3">
+                            <input class="form-check-input" type="checkbox" role="switch" formControlName="is_public">
+                        </div>
+                    </div>
 
-           
-                <div *ngIf="like?.message == 'liked'" class="d-flex align-items-center">
-                    <small class="text-muted">You can dislike this post here..!</small>
-                    <a class="btn btn-sm btn-danger m-3" (click)="like_or_dislike(post?.id)">
-                        Dislike
-                    </a>
+                    <div *ngIf="like?.message == 'liked'" class="d-flex align-items-center">
+                        <small class="text-muted">You can dislike this post here..!</small>
+                        <a class="btn btn-sm btn-danger m-3" (click)="like_or_dislike(post?.id)">
+                            Dislike
+                        </a>
+                    </div>
+                    <div *ngIf="like?.message == 'not liked'" class="d-flex align-items-center">
+                        <small class="text-muted">You can like this post here..!</small>
+                        <a class="btn btn-sm btn-success m-3" (click)="like_or_dislike(post?.id)">
+                            Like
+                        </a>
+                    </div>
+
+
                 </div>
-                <div *ngIf="like?.message == 'not liked'" class="d-flex align-items-center">
-                    <small class="text-muted">You can like this post here..!</small>
-                    <a class="btn btn-sm btn-success m-3" (click)="like_or_dislike(post?.id)">
-                        Like
-                    </a>
+                <div class="mr-md-3">
+                    <img *ngIf="post?.image" src="{{ post?.image }}" alt="" style="max-height: 220px;">
+                    <img *ngIf="!post?.image" [src]="'assets/images/blog.jpg'" alt="" style="max-height: 220px">
                 </div>
-
-
             </div>
-            <div class="mr-md-3">
-                <img *ngIf="post?.image" src="{{ post?.image }}" alt="" style="max-height: 220px;">
-                <img *ngIf="!post?.image" [src]="'assets/images/blog.jpg'" alt="" style="max-height: 220px">
+            <div class="row mx-md-5 mt-3">
+                <p *ngIf="!updation" style="text-indent: 200px;">{{ post?.content }}</p>
+                <textarea *ngIf="updation" formControlName="content" class="form-control mx-5"></textarea>
             </div>
-        </div>
-        <div class="row mx-md-5 mt-3">
-            <p style="text-indent: 200px;">{{ post?.content }}</p>
-        </div>
+            <div class="text-center m-3" *ngIf="updation">
+                <button type="submit" class="btn btn-outline-primary mx-2" (click)="closeUpdateForm()">Cancel</button>
+                <button type="submit" class="btn btn-outline-warning mx-2" (click)="updatePost()">Update</button>
+            </div>
+            <div class="text-center m-3" *ngIf="author">
+                <button type="submit" class="btn btn-outline-warning" (click)="getUpdateForm()">Update this
+                    post</button>
+            </div>
+        </form>
     </div>
 
 </div>

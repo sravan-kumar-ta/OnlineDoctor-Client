@@ -20,6 +20,12 @@
                     <div class="d-flex justify-content-between">
                         <a [routerLink]="['/', 'doctor', 'blogs', post?.id]" class="stretched-link">Continue
                             reading...</a>
+                        <div *ngIf="post.is_public == true">
+                            <p class="text-warning">Public Post</p>
+                        </div>
+                        <div *ngIf="post.is_public == false">
+                            <p class="text-warning">Private Post</p>
+                        </div>
                         <div class="d-flex">
                             <div class="mx-2 border-bottom border-info">
                                 {{ post.total_likes }}
@@ -45,7 +51,7 @@
         <li class="page-item disabled" *ngIf="prevPage == 0">
             <a class="page-link">&laquo; Previous</a>
         </li>
-        
+
         <li class="page-item">
             <a class="page-link text-success">page {{page}} out of {{ totalPages }}</a>
         </li>

@@ -56,10 +56,9 @@ export class DoctorService {
     let url = `${this.domain}/posts/`
     return this.http.post(url, data)
   }
-
-  // createBlog(data: any) {
-  //   let options = { headers: new HttpHeaders().set('Content-Type', 'multipart/form-data; boundary=something') };
-  //   let url = `${this.domain}/posts/`
-  //   return this.http.post(url, data)
-  // }
+  
+  updateBlog(data: any, id: number) {
+    let url = `${this.domain}/posts/${id}/`
+    return this.http.patch(url, data)
+  }
 }
