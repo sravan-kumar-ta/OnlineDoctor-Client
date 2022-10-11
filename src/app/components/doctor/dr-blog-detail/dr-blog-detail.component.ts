@@ -22,6 +22,10 @@ export class DrBlogDetailComponent implements OnInit {
   user_id: number = 0;
   user: any;
 
+  shortLink: string = "";
+  loading: boolean = false;
+  file: any;
+
   updateForm = new FormGroup({
     title: new FormControl(''),
     content: new FormControl(''),
@@ -92,6 +96,22 @@ export class DrBlogDetailComponent implements OnInit {
       this.updation = false;
       this.author = true;
     })
+  }
+
+  onChange(event: any) {
+    this.file = event.target.files[0];
+  }
+
+  onUpload() {
+    this.loading = !this.loading;
+    this.drService.updateImage(this.file, this.post_id).subscribe(
+      (data: any) => {
+        if (typeof (data) === 'object') {
+          this.loading = false;
+          this.post = data;
+        }
+      }
+    );
   }
 
 }

@@ -56,9 +56,16 @@ export class DoctorService {
     let url = `${this.domain}/posts/`
     return this.http.post(url, data)
   }
-  
+
   updateBlog(data: any, id: number) {
     let url = `${this.domain}/posts/${id}/`
     return this.http.patch(url, data)
+  }
+
+  updateImage(file: any, id: number) {
+    let url = `${this.domain}/posts/${id}/`
+    const formData = new FormData();
+    formData.append("image", file, file.name);
+    return this.http.patch(url, formData)
   }
 }
