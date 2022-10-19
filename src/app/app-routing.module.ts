@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { UserDetailsComponent } from './components/auth/user-details/user-details.component';
+import { ChatComponent } from './components/chat/chat.component';
 import { DrAddBlogComponent } from './components/doctor/dr-add-blog/dr-add-blog.component';
 import { DrAppointmentsComponent } from './components/doctor/dr-appointments/dr-appointments.component';
 import { DrBlogDetailComponent } from './components/doctor/dr-blog-detail/dr-blog-detail.component';
@@ -56,6 +57,7 @@ const routes: Routes = [
       {path:'blogs/:id', component:DrBlogDetailComponent},
     ], canActivate: [DoctorGuard]
   },
+  {path: 'chat/:senderId/:receiverId', component:ChatComponent},
   {path: '**', pathMatch: 'full', component: PageNotFoundComponent}
 ];
 

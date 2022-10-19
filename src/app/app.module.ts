@@ -33,7 +33,8 @@ import { DrAppointmentsComponent } from './components/doctor/dr-appointments/dr-
 import { DrBlogsComponent } from './components/doctor/dr-blogs/dr-blogs.component';
 import { DrMyBlogsComponent } from './components/doctor/dr-my-blogs/dr-my-blogs.component';
 import { DrAddBlogComponent } from './components/doctor/dr-add-blog/dr-add-blog.component';
-import { DrBlogDetailComponent } from './components/doctor/dr-blog-detail/dr-blog-detail.component'
+import { DrBlogDetailComponent } from './components/doctor/dr-blog-detail/dr-blog-detail.component';
+import { ChatComponent } from './components/chat/chat.component'
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { DrBlogDetailComponent } from './components/doctor/dr-blog-detail/dr-blo
     DrMyBlogsComponent,
     DrAddBlogComponent,
     DrBlogDetailComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,

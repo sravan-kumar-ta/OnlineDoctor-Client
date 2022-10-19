@@ -1,0 +1,51 @@
+<div class="container">
+
+    <div class="position-absolute top-50 start-50 translate-middle border border-info rounded col-lg-6 col-md-10 col-sm-12"
+        style="height: 80%;">
+        <div style="height: 10%;" class="border d-flex align-items-center justify-content-between">
+            <h5 class="mx-3">Dr. doctor </h5>
+            <a routerLink=".." class="btn btn-outline-danger btn-sm mx-3">Close chat</a>
+        </div>
+
+        <div style="height: 80%; overflow: auto;" id="msg-box">
+            <div *ngFor="let data of socketMessages">
+
+                <div *ngIf="data.receiverid == receiverId && data.senderid == senderId"
+                    class="chat-message-right pb-4 mx-3" id="mesgs">
+                    <div class="d-flex align-items-center bg-light rounded py-2 px-3 ml-3"
+                        style="display: flex; flex-direction: row-reverse;">
+                        <div class="mx-3">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1"
+                                width="30" height="30">
+                        </div>
+                        <div>
+                            <div class="font-weight-bold mb-1 text-success">You</div>
+                            {{ data.msg }}
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="data.senderid == receiverId" class="chat-message-left pb-4 mx-3" id="mesgs">
+                    <div class="d-flex align-items-center bg-light rounded py-2 px-3 ml-3">
+                        <div class="mx-3">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1"
+                                width="30" height="30">
+                        </div>
+                        <div>
+                            <div class="font-weight-bold mb-1 text-success">You</div>
+                            {{ data.msg }}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div style="height: 10%;" class="border d-flex justify-content-around align-items-center" id="submit">
+            <input [(ngModel)]="inputMessage" (keyup)="$event.keyCode == 13 && sendMessage()"
+                placeholder="Enter a message" type="text" id="input" class="rounded border-info px-3 py-1"
+                style="width: 80%;" autofocus>
+            <button (click)="sendMessage()" class="btn btn-secondary btn-sm px-4">Send</button>
+        </div>
+    </div>
+</div>
