@@ -3,8 +3,11 @@
     <div class="position-absolute top-50 start-50 translate-middle border border-info rounded col-lg-6 col-md-10 col-sm-12"
         style="height: 80%;">
         <div style="height: 10%;" class="border d-flex align-items-center justify-content-between">
-            <h5 class="mx-3">Dr. doctor </h5>
-            <a routerLink=".." class="btn btn-outline-danger btn-sm mx-3">Close chat</a>
+            <h5 class="mx-3">{{ receiver?.get_full_name }}</h5>
+            <a *ngIf="sender?.role == 'patient'" routerLink="/patient/home/"
+                class="btn btn-outline-danger btn-sm mx-3">Close chat</a>
+            <a *ngIf="sender?.role == 'doctor'" routerLink="/doctor/profile/"
+                class="btn btn-outline-danger btn-sm mx-3">Close chat</a>
         </div>
 
         <div style="height: 80%; overflow: auto;" id="msg-box">
@@ -32,7 +35,7 @@
                                 width="30" height="30">
                         </div>
                         <div>
-                            <div class="font-weight-bold mb-1 text-success">You</div>
+                            <div class="font-weight-bold mb-1 text-success">{{ receiver?.first_name }}</div>
                             {{ data.msg }}
                         </div>
                     </div>

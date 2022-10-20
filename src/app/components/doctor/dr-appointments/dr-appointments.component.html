@@ -29,7 +29,7 @@
                         <td>{{ appointment.date | date:'fullDate' }}</td>
                         <td>{{ appointment.date_time_start | date:'shortTime' }}</td>
                         <td *ngIf="chat">
-                            <a href="" class="btn btn-primary btn-sm">Open Chat</a>
+                            <a [routerLink]="['/', 'chat', appointment.doctor.details.id, appointment.patient.id]" class="btn btn-primary btn-sm">Open Chat</a>
                         </td>
                         <td *ngIf="!chat">{{ appointment.status }}</td>
 

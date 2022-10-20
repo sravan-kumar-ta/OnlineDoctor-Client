@@ -40,6 +40,11 @@ export class AuthService {
     let url = `${this.domain}/user/`;
     return this.http.get(url);
   }
+  
+  getUserById(id:number) {
+    let url = `${this.domain}/user_by_id/${id}/`;
+    return this.http.get(url);
+  }
 
   updateUser(data: any) {
     let url = `${this.domain}/user/`

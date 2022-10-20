@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/services/authentication/auth.service';
 import { WebsocketService } from 'src/app/services/websocket.service';
 
 @Component({
@@ -22,8 +23,14 @@ export class ChatComponent implements OnInit {
     senderid: 0,
     receiverid: 0
   }];
+  sender: any;
+  receiver: any;
 
-  constructor(private route: ActivatedRoute, private socketService: WebsocketService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private socketService: WebsocketService,
+    private userService: AuthService
+  ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -36,6 +43,15 @@ export class ChatComponent implements OnInit {
     this.socketService.getMessage().subscribe((data: any) => {
       this.socketMessages.push(data);
     });
+
+    setTimeout(() => {
+      this.userService.getUserById(this.receiverId).subscribe(data => {
+        this.receiver = data;
+        this.userService.getUser().subscribe(data => {
+          this.sender = data;
+        })
+      });
+    }, 1000);
   }
 
 
@@ -51,9 +67,9 @@ export class ChatComponent implements OnInit {
 
       this.socketService.emit("new-message", { receiverid: this.receiverId, msg: this.inputMessage, senderid: this.senderId })
       this.inputMessage = '';
-      
+
       let parent = document.getElementById('msg-box');
-      parent!.scrollTop = parent!.scrollHeight - (parent!.clientHeight-350);
+      parent!.scrollTop = parent!.scrollHeight - parent!.clientHeight;
     }
   }
 }
