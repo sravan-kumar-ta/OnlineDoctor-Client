@@ -1,5 +1,3 @@
-<app-pt-navbar></app-pt-navbar>
-
 <div class="container px-4 py-2" id="icon-grid">
     <div class="d-flex">
         <h2 class="pb-2 border-bottom">Appointment with Dr.{{ doctor?.details.get_full_name }}</h2>
@@ -25,7 +23,8 @@
                     <label for="select-date">Select a date:</label>
                     <select class="form-select" aria-label="Default select example" [(ngModel)]="timeInput">
                         <option selected disabled>Open this and select a timeslot</option>
-                        <option *ngFor="let slot of timeSlots" [value]="slot.start">{{slot.start}} to {{slot.end}}</option>
+                        <option *ngFor="let slot of timeSlots" [value]="slot.start">{{slot.start}} to {{slot.end}}
+                        </option>
                     </select>
                     <button (click)="makePayment(dateInput.value)" class="btn btn-outline-info my-2">
                         Make Payment

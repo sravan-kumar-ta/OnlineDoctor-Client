@@ -32,23 +32,25 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.authService.authState.subscribe(user => {
       console.log('ID Token:', user.idToken)
-      this.service.googleAuth(user.idToken).subscribe(success => {
-        this.success_data = success;
-        localStorage.clear();
-        this.service.saveTokens(this.success_data.tokens);
-        this.service.getUser().subscribe(data => {
-          this.user = data;
-          if (this.user.role == 'patient') {
-            this.router.navigate(['/patient/home/'])
-          } else if (this.user.role == 'doctor') {
-            this.router.navigate(['/doctor/profile/'])
-          }
-        })
+      this.service.googleAuth(user.idToken).subscribe(
+        success => {
+          this.success_data = success;
+          localStorage.clear();
+          this.service.saveTokens(this.success_data.tokens);
+          this.service.getUser().subscribe(data => {
+            this.user = data;
+            if (this.user.role == 'patient') {
+              this.router.navigate(['/patient/home/'])
+            } else if (this.user.role == 'doctor') {
+              this.router.navigate(['/doctor/profile/'])
+            }
+          })
 
-      }, error => {
-        console.log(error.error.error_message)
-        this.error_message = error.error.error_message;
-      });
+        }, error => {
+          console.log(error.error.error_message)
+          this.error_message = error.error.error_message;
+        }
+      );
     })
   }
 
@@ -73,6 +75,7 @@ export class LoginComponent implements OnInit {
         });
       } else {
         res.json().then(data => this.error_message = data.detail);
+        alert('invalid credentials..!')
       }
     });
 

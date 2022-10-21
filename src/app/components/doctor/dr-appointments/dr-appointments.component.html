@@ -1,7 +1,5 @@
-<app-dr-navbar></app-dr-navbar>
-
 <div class="container px-4 py-2" id="icon-grid">
-    
+
     <div class="d-flex align-items-center">
         <h2 class="pb-2 border-bottom me-4">Appointments</h2>
         <b>Filter:</b>
@@ -29,7 +27,8 @@
                         <td>{{ appointment.date | date:'fullDate' }}</td>
                         <td>{{ appointment.date_time_start | date:'shortTime' }}</td>
                         <td *ngIf="chat">
-                            <a [routerLink]="['/', 'chat', appointment.doctor.details.id, appointment.patient.id]" class="btn btn-primary btn-sm">Open Chat</a>
+                            <a [routerLink]="['/', 'chat', appointment.doctor.details.id, appointment.patient.id]"
+                                class="btn btn-primary btn-sm">Open Chat</a>
                         </td>
                         <td *ngIf="!chat">{{ appointment.status }}</td>
 

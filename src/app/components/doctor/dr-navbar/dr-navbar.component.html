@@ -4,20 +4,20 @@
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li class="mx-2">
-                    <a href="doctor/profile"
+                    <a routerLink="/doctor/profile"
                         class="nav-link px-2 link-primary border-bottom border-success border-4 rounded">Profile</a>
                 </li>
                 <li class="mx-2">
-                    <a href="doctor/appointments"
+                    <a routerLink="/doctor/appointments"
                         class="nav-link px-2 link-primary border-bottom border-success border-4 rounded">All
                         Appointments</a>
                 </li>
                 <li class="mx-2">
-                    <a href="doctor/blogs"
+                    <a routerLink="/doctor/blogs"
                         class="nav-link px-2 link-primary border-bottom border-success border-4 rounded">All Blogs</a>
                 </li>
                 <li class="mx-2">
-                    <a href="doctor/my-blogs"
+                    <a routerLink="/doctor/my-blogs"
                         class="nav-link px-2 link-primary border-bottom border-success border-4 rounded">My Blogs</a>
                 </li>
             </ul>
@@ -27,14 +27,14 @@
                 style="color: #FF6363; border-left: 2px solid; border-right: 2px solid; padding: 5px 15px; background-color: #ffe6e6">
                 <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
                 <span class="mx-3">You need to add some details<br>to get an appointment from the patients.</span>
-                <a href="doctor/add-doctor-details"
+                <a routerLink="/doctor/add-doctor-details"
                     class="border border-danger border-3 text-decoration-none rounded px-2">Add now?</a>
             </div>
 
 
             <ul class="nav col-12 col-lg-auto mb-2 justify-content-center mb-md-0 align-items-center">
                 <li>Hi {{user?.get_full_name}}</li>
-                <li><a href="" (click)="logout()" class="btn btn-outline-success mx-3">Logout</a></li>
+                <li><button (click)="logout()" class="btn btn-outline-success mx-3">Logout</button></li>
             </ul>
 
         </div>

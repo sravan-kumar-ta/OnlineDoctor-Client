@@ -1,5 +1,3 @@
-<app-pt-navbar></app-pt-navbar>
-
 <div class="container px-4 py-2" id="icon-grid">
     <div class="d-flex">
         <h2 class="pb-2 border-bottom">Profile</h2>
@@ -32,7 +30,7 @@
                         <td>8086183640</td>
                     </tr>
                 </table>
-                <a href="patient/update-user/" class="text-decoration-none">
+                <a routerLink="/patient/update-user/" class="text-decoration-none">
                     <h6 class="text-center border mx-5 px-3 py-2 shadow rounded border-info ">Update
                     </h6>
                 </a>
@@ -79,16 +77,19 @@
                         <table class="m-auto" cellpadding="5">
                             <tr class="d-flex justify-content-between align-items-center">
                                 <td>Relation</td>
-                                <td><input required type="text" formControlName="relation" placeholder="eg: Father" class="form-control"></td>
+                                <td><input required type="text" formControlName="relation" placeholder="eg: Father"
+                                        class="form-control"></td>
                             </tr>
                             <tr class="d-flex justify-content-between align-items-center">
                                 <td>Name</td>
-                                <td><input required type="text" formControlName="name" placeholder="Name" class="form-control">
+                                <td><input required type="text" formControlName="name" placeholder="Name"
+                                        class="form-control">
                                 </td>
                             </tr>
                             <tr class="d-flex justify-content-between align-items-center">
                                 <td>Age</td>
-                                <td><input required type="number" formControlName="age" placeholder="Age" class="form-control">
+                                <td><input required type="number" formControlName="age" placeholder="Age"
+                                        class="form-control">
                                 </td>
                             </tr>
                         </table>

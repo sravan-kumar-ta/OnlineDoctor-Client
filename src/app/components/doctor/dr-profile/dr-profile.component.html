@@ -1,5 +1,3 @@
-<app-dr-navbar></app-dr-navbar>
-
 <div class="container px-4 py-2" id="icon-grid">
     <div class="d-flex">
         <h2 class="pb-2 border-bottom">Profile</h2>
@@ -26,7 +24,7 @@
                         <td class="text-primary">{{ user?.email }}</td>
                     </tr>
                 </table>
-                <a href="doctor/update-doctor/" class="text-decoration-none">
+                <a routerLink="/doctor/update-doctor/" class="text-decoration-none">
                     <h6 class="text-center border mx-5 px-3 py-2 shadow rounded border-info">Update</h6>
                 </a>
             </div>
