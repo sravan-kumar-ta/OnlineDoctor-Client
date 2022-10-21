@@ -82,4 +82,16 @@ export class AuthService {
     let url = `${this.domain}/google/`;
     return this.http.post(url, {'auth_token': token})
   }
+
+  getPasswordResetToken(data: any) {
+    let url = `${this.domain}/password_reset/`;
+    return this.http.post(url, data)
+  }
+
+  resetPassword(data: any){
+    let url = `${this.domain}/password_reset/confirm/`;
+    return this.http.post(url, data)
+  }
+
+
 }

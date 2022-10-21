@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/auth/login/login.component';
+import { PasswordResetComponent } from './components/auth/password-reset/password-reset.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { UserDetailsComponent } from './components/auth/user-details/user-details.component';
 import { ChatComponent } from './components/chat/chat.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path:'', component:LoginComponent},
   {path:'register', component:RegisterComponent},
   {path:'new-user', component:UserDetailsComponent},
+  {path:'password-reset', component:PasswordResetComponent},
 
   {
     path: 'patient',

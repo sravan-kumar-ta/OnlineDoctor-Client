@@ -14,7 +14,7 @@ export class TokenInterceptorService implements HttpInterceptor {
     let mod_request = this.AddTokenheader(request, this.service.getAccessToken());
 
     return next.handle(mod_request).pipe(catchError(errordata => {
-      if (request.url.match("/api/google/")) {
+      if (request.url.match("/api/google/") || request.url.match("/password_reset/")) {
         return next.handle(request)
       } else {
         if (errordata.status === 401) {
