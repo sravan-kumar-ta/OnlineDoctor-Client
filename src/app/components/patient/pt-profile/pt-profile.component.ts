@@ -24,23 +24,8 @@ export class PtProfileComponent implements OnInit {
   ngOnInit(): void {
     this.service.getUser().subscribe(data => {
       this.user = data;
-      this.ptService.getFamilyMembers().subscribe(data => {
-        this.members = data;
-      })
     });
     
-  }
-
-  addMembers() {
-    console.log(this.memberForm.value);
-    this.ptService.addMember(this.memberForm.value).subscribe(success => {
-      alert("Successfully added a member");
-      this.ptService.getFamilyMembers().subscribe(data => {
-        this.members = data;
-      })
-    }), (error: { statusText: any; }) => {
-      alert(error.statusText);
-    }
   }
 
 }

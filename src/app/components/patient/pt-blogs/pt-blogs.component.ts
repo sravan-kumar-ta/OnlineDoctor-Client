@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PatientService } from 'src/app/services/patient.service';
+import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
   selector: 'app-pt-blogs',
@@ -15,7 +15,7 @@ export class PtBlogsComponent implements OnInit {
   page: number = 1;
   totalPages: number = 0;
 
-  constructor(private service:PatientService) { }
+  constructor(private service:BlogService) { }
 
   ngOnInit(): void {
     this.getPosts(this.page);

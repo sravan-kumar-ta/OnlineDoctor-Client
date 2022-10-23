@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { DoctorService } from 'src/app/services/doctor.service';
+import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
   selector: 'app-dr-add-blog',
@@ -18,7 +18,7 @@ export class DrAddBlogComponent implements OnInit {
 
   created_post: any;
 
-  constructor(private service: DoctorService, private router: Router) { }
+  constructor(private service: BlogService, private router: Router) { }
 
   ngOnInit(): void {
   }

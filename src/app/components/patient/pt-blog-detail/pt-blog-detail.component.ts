@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PatientService } from 'src/app/services/patient.service';
+import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
   selector: 'app-pt-blog-detail',
@@ -13,7 +13,7 @@ export class PtBlogDetailComponent implements OnInit {
   post: any;
   like: any
 
-  constructor(private route: ActivatedRoute, private service: PatientService) { }
+  constructor(private route: ActivatedRoute, private service: BlogService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(obj => {

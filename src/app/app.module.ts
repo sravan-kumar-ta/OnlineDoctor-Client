@@ -14,7 +14,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './services/authentication/token-interceptor.service';
 import { PtProfileComponent } from './components/patient/pt-profile/pt-profile.component';
 import { PtUpdateUserComponent } from './components/patient/pt-update-user/pt-update-user.component';
-import { PtUpdateMemberComponent } from './components/patient/pt-update-member/pt-update-member.component';
 import { PtBlogsComponent } from './components/patient/pt-blogs/pt-blogs.component';
 import { PtBlogDetailComponent } from './components/patient/pt-blog-detail/pt-blog-detail.component';
 import {
@@ -48,7 +47,6 @@ import { PasswordResetComponent } from './components/auth/password-reset/passwor
     PtDoctorsComponent,
     PtProfileComponent,
     PtUpdateUserComponent,
-    PtUpdateMemberComponent,
     PtBlogsComponent,
     PtBlogDetailComponent,
     UserDetailsComponent,

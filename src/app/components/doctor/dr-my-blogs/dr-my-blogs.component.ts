@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DoctorService } from 'src/app/services/doctor.service';
-import { PatientService } from 'src/app/services/patient.service';
+import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
   selector: 'app-dr-my-blogs',
@@ -16,7 +15,7 @@ export class DrMyBlogsComponent implements OnInit {
   page: number = 1;
   totalPages: number = 0;
 
-  constructor(private service:DoctorService) { }
+  constructor(private service:BlogService) { }
 
   ngOnInit(): void {
     this.getPosts(this.page);

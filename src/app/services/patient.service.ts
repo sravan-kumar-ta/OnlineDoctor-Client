@@ -20,53 +20,6 @@ export class PatientService {
     return this.http.get(url);
   }
 
-  addMember(data: any) {
-    let url = `${this.domain}/family_members/`
-    return this.http.post(url, data, { observe: 'response' });
-  }
-
-  getFamilyMembers() {
-    let url = `${this.domain}/family_members/`
-    return this.http.get(url);
-  }
-
-  getFamilyMember(id: number) {
-    let url = `${this.domain}/family_members/${id}/`
-    return this.http.get(url);
-  }
-
-  updateFamilyMember(data: any, id: number) {
-    let url = `${this.domain}/family_members/${id}/`
-    return this.http.put(url, data, { observe: 'response' });
-  }
-
-  deleteFamilyMember(id: number) {
-    let url = `${this.domain}/family_members/${id}/`
-    return this.http.delete(url);
-  }
-
-  // Blogs
-
-  getAllBlogs(pageNumber: number) {
-    let url = `${this.domain}/posts/`
-    return this.http.get(url, {params:{page:pageNumber}});
-  }
-
-  getPost(id: number){
-    let url = `${this.domain}/posts/${id}/`
-    return this.http.get(url);
-  }
-
-  getLike(id: number){
-    let url = `${this.domain}/posts/${id}/liked_or_not/`
-    return this.http.get(url);
-  }
-
-  doLikeOrDislike(id: number){
-    let url = `${this.domain}/posts/${id}/like_or_dislike/`
-    return this.http.get(url);
-  }
-
   //create appointment
   getDoctor(id: number){
     let url = `${this.domain}/doctor/${id}/`

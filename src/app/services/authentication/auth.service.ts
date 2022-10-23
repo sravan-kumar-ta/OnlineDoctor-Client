@@ -20,6 +20,7 @@ export class AuthService {
   constructor(private router: Router, private http: HttpClient) { }
 
   login(data: any) {
+    console.log(data)
     this.url = `${this.domain}/login/`
     this.options.method = 'POST'
     this.options.body = JSON.stringify(data)

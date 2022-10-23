@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/authentication/auth.service';
-import { DoctorService } from 'src/app/services/doctor.service';
-import { PatientService } from 'src/app/services/patient.service';
+import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
   selector: 'app-dr-blog-detail',
@@ -34,9 +33,8 @@ export class DrBlogDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private service: PatientService,
-    private auth: AuthService,
-    private drService: DoctorService
+    private service: BlogService,
+    private auth: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -90,7 +88,7 @@ export class DrBlogDetailComponent implements OnInit {
   }
 
   updatePost() {
-    this.drService.updateBlog(this.updateForm.value, this.post_id).subscribe(data => {
+    this.service.updateBlog(this.updateForm.value, this.post_id).subscribe(data => {
       console.log(data);
       this.post = data;
       this.updation = false;
@@ -104,7 +102,7 @@ export class DrBlogDetailComponent implements OnInit {
 
   onUpload() {
     this.loading = !this.loading;
-    this.drService.updateImage(this.file, this.post_id).subscribe(
+    this.service.updateImage(this.file, this.post_id).subscribe(
       (data: any) => {
         if (typeof (data) === 'object') {
           this.loading = false;

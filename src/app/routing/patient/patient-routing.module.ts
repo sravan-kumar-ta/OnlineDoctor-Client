@@ -7,7 +7,6 @@ import { PtBlogsComponent } from 'src/app/components/patient/pt-blogs/pt-blogs.c
 import { PtDoctorsComponent } from 'src/app/components/patient/pt-doctors/pt-doctors.component';
 import { PtHomeComponent } from 'src/app/components/patient/pt-home/pt-home.component';
 import { PtProfileComponent } from 'src/app/components/patient/pt-profile/pt-profile.component';
-import { PtUpdateMemberComponent } from 'src/app/components/patient/pt-update-member/pt-update-member.component';
 import { PtUpdateUserComponent } from 'src/app/components/patient/pt-update-user/pt-update-user.component';
 
 export const patientRoutes: Routes = [
@@ -15,7 +14,6 @@ export const patientRoutes: Routes = [
   { path: 'profile', component: PtProfileComponent },
   { path: 'doctors/:id', component: PtDoctorsComponent },
   { path: 'update-user', component: PtUpdateUserComponent },
-  { path: 'family-member/:id', component: PtUpdateMemberComponent },
   { path: 'blogs', component: PtBlogsComponent },
   { path: 'blogs/:id', component: PtBlogDetailComponent },
   { path: 'appointment/:id', component: PtAppointmentComponent },

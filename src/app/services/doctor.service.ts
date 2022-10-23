@@ -45,27 +45,4 @@ export class DoctorService {
     let url = `${this.domain}/appointments/completed/`
     return this.http.get(url);
   }
-
-  //Blogs
-  getMyBlogs(pageNumber: number) {
-    let url = `${this.domain}/posts/get_my_posts/`
-    return this.http.get(url, { params: { page: pageNumber } });
-  }
-
-  createBlog(data: any) {
-    let url = `${this.domain}/posts/`
-    return this.http.post(url, data)
-  }
-
-  updateBlog(data: any, id: number) {
-    let url = `${this.domain}/posts/${id}/`
-    return this.http.patch(url, data)
-  }
-
-  updateImage(file: any, id: number) {
-    let url = `${this.domain}/posts/${id}/`
-    const formData = new FormData();
-    formData.append("image", file, file.name);
-    return this.http.patch(url, formData)
-  }
 }
