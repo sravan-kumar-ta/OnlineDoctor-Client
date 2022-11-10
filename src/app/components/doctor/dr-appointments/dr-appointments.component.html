@@ -17,7 +17,6 @@
                         <th scope="col">Date</th>
                         <th scope="col">Time</th>
                         <th scope="col" *ngIf="chat">Chat</th>
-                        <th scope="col" *ngIf="!chat">Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,7 +29,6 @@
                             <a [routerLink]="['/', 'chat', appointment.doctor.details.id, appointment.patient.id]"
                                 class="btn btn-primary btn-sm">Open Chat</a>
                         </td>
-                        <td *ngIf="!chat">{{ appointment.status }}</td>
 
                     </tr>
                 </tbody>

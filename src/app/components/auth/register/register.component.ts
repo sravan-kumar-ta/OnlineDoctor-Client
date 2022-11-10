@@ -33,7 +33,8 @@ export class RegisterComponent implements OnInit {
     let data = this.registerForm.value;
     this.service.register(data).then(res => {
       if (res.ok) {
-        res.json().then(() => this.router.navigate(['login']));
+        alert("User created..!")
+        res.json().then(() => this.router.navigate(['']));
       } else {
         res.json().then(data => {
           for (const key in data) {

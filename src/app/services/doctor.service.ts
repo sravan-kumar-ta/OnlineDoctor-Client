@@ -6,7 +6,8 @@ import { Injectable } from '@angular/core';
 })
 export class DoctorService {
 
-  domain: string = 'http://127.0.0.1:8000/api'
+  // domain: string = 'http://127.0.0.1:8000/api'
+  domain: string = 'https://online-doctor-x.herokuapp.com/api'
 
   constructor(private http: HttpClient) { }
 

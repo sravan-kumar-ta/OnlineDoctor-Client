@@ -4,7 +4,7 @@
         <a routerLink="/doctor/add-blog" class="mx-3 text-decoration-none btn btn-outline-primary">Create a new blog</a>
     </div>
 
-    <div class="row mb-2">
+    <div class="row mb-2" *ngIf="posts">
         <div class="col-md-6" *ngFor="let post of posts">
             <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <div class="col p-4 d-flex flex-column position-static">
@@ -42,7 +42,7 @@
         </div>
     </div>
     <hr>
-    <ul class="pagination justify-content-center">
+    <ul class="pagination justify-content-center" *ngIf="posts">
         <li class="page-item cursor" *ngIf="prevPage > 0">
             <a class="page-link" (click)="getPosts(prevPage)">&laquo; Previous</a>
         </li>
@@ -61,6 +61,8 @@
             <a class="page-link">Next &raquo;</a>
         </li>
     </ul>
+
+    <h4 *ngIf="!posts" class="text-center text-warning">No posts available..!</h4>
 
     <hr>
 </div>

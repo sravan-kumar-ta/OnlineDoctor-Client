@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router, RouterEvent } from '@angular/router';
 import { DoctorService } from 'src/app/services/doctor.service';
+import { DrNavbarComponent } from '../dr-navbar/dr-navbar.component';
 
 @Component({
   selector: 'app-dr-detailsadd',
@@ -32,7 +33,7 @@ export class DrDetailsaddComponent implements OnInit {
     sat_end: new FormControl('')
   })
 
-  constructor(private service: DoctorService, private router: Router) { }
+  constructor(private service: DoctorService, private router: Router, private navbar: DrNavbarComponent) { }
 
   ngOnInit(): void {
     this.service.getSpecialities().subscribe(data => {
@@ -41,7 +42,8 @@ export class DrDetailsaddComponent implements OnInit {
   }
 
   addDoctor() {
-    this.service.addDoctor(this.detailsForm.value).subscribe(() => {
+    this.service.addDoctor(this.detailsForm.value).subscribe(data => {
+        this.navbar.doctor = data;
         this.router.navigate(['doctor/profile'])
       },
       error => {

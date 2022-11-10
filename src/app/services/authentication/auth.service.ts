@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   
-  domain: string = 'http://127.0.0.1:8000/api'
+  // domain: string = 'http://127.0.0.1:8000/api'
+  domain: string = 'https://online-doctor-x.herokuapp.com/api'
   url: string = ''  
   options: any = {
     method: 'GET',
@@ -32,7 +33,7 @@ export class AuthService {
     this.url = `${this.domain}/user/register/`
     this.options.method = 'POST'
     let local_option = this.options
-    local_option = JSON.stringify(data)
+    local_option.body = JSON.stringify(data)
 
     return fetch(this.url, local_option)
   }
@@ -61,7 +62,8 @@ export class AuthService {
   }
 
   generateRefreshToken() {
-    let url = 'http://127.0.0.1:8000/api/token/refresh/'
+    // let url = 'http://127.0.0.1:8000/api/token/refresh/'
+    let url = 'https://srvn-s3.herokuapp.com/api/token/refresh/'
     let body = {
       "refresh": this.getRefreshToken()
     }
