@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/authentication/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 import { SocialAuthService } from '@abacritt/angularx-social-login'
 
@@ -30,27 +30,31 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.authService.authState.subscribe(user => {
-      console.log('ID Token:', user.idToken)
-      this.service.googleAuth(user.idToken).subscribe(
-        success => {
-          this.success_data = success;
-          localStorage.clear();
-          this.service.saveTokens(this.success_data.tokens);
-          this.service.getUser().subscribe(data => {
-            this.user = data;
-            if (this.user.role == 'patient') {
-              this.router.navigate(['/patient/home/'])
-            } else if (this.user.role == 'doctor') {
-              this.router.navigate(['/doctor/profile/'])
+      this.authService.authState.subscribe(user => {
+        if (user) {
+          console.log('ID Token:', user.idToken)
+          this.service.googleAuth(user.idToken).subscribe(
+            success => {
+              this.success_data = success;
+              localStorage.clear();
+              this.service.saveTokens(this.success_data.tokens);
+              this.service.getUser().subscribe(data => {
+                this.user = data;
+                if (this.user.role == 'patient') {
+                  this.router.navigate(['/patient/home/'])
+                } else if (this.user.role == 'doctor') {
+                  this.router.navigate(['/doctor/profile/'])
+                } else {
+                  this.router.navigate(['/new-user/'])
+                }
+              })
+    
+            }, error => {
+              console.log(error.error.error_message)
+              this.error_message = error.error.error_message;
             }
-          })
-
-        }, error => {
-          console.log(error.error.error_message)
-          this.error_message = error.error.error_message;
+          );
         }
-      );
     })
   }
 
@@ -80,5 +84,5 @@ export class LoginComponent implements OnInit {
     });
 
   }
-
+  
 }

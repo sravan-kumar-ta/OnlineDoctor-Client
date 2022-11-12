@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { GloballVar } from './globallVariable';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,8 @@ import { Router } from '@angular/router';
 export class AuthService {
   
   // domain: string = 'http://127.0.0.1:8000/api'
-  domain: string = 'https://online-doctor-x.herokuapp.com/api'
+  // domain: string = 'https://online-doctor-x.herokuapp.com/api'
+  domain: string = this.globall.domain
   url: string = ''  
   options: any = {
     method: 'GET',
@@ -18,10 +20,9 @@ export class AuthService {
     }
   }
 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient, private globall: GloballVar) { }
 
   login(data: any) {
-    console.log(data)
     this.url = `${this.domain}/login/`
     this.options.method = 'POST'
     this.options.body = JSON.stringify(data)
@@ -62,8 +63,7 @@ export class AuthService {
   }
 
   generateRefreshToken() {
-    // let url = 'http://127.0.0.1:8000/api/token/refresh/'
-    let url = 'https://srvn-s3.herokuapp.com/api/token/refresh/'
+    let url = `${this.domain}/token/refresh/`
     let body = {
       "refresh": this.getRefreshToken()
     }

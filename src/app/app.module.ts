@@ -11,7 +11,7 @@ import { RegisterComponent } from './components/auth/register/register.component
 import { PtHomeComponent } from './components/patient/pt-home/pt-home.component';
 import { PtDoctorsComponent } from './components/patient/pt-doctors/pt-doctors.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptorService } from './services/authentication/token-interceptor.service';
+import { TokenInterceptorService } from './services/interceptor/token-interceptor.service';
 import { PtProfileComponent } from './components/patient/pt-profile/pt-profile.component';
 import { PtUpdateUserComponent } from './components/patient/pt-update-user/pt-update-user.component';
 import { PtBlogsComponent } from './components/patient/pt-blogs/pt-blogs.component';

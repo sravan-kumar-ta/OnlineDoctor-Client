@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { map } from 'rxjs/operators';
-import { AuthService } from '../services/authentication/auth.service';
+import { AuthService } from '../auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PatientGuard implements CanActivate {
+export class DoctorGuard implements CanActivate {
 
   user: any;
 
@@ -15,7 +15,7 @@ export class PatientGuard implements CanActivate {
   canActivate() {
     return this.service.getUser().pipe(map((res) => {
       this.user = res;
-      if (this.user.role == 'patient') {
+      if (this.user.role == 'doctor') {
         return true;
       }
       alert("You don't have permission to view this page...!")

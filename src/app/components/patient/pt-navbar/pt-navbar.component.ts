@@ -1,5 +1,6 @@
+import { SocialAuthService } from '@abacritt/angularx-social-login';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/authentication/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-pt-navbar',
@@ -10,7 +11,7 @@ export class PtNavbarComponent implements OnInit {
 
   user: any;
 
-  constructor(private service:AuthService) { }
+  constructor(private service:AuthService, private authService: SocialAuthService) { }
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -22,6 +23,7 @@ export class PtNavbarComponent implements OnInit {
 
   logout() {
     this.service.logout();
+    this.authService.signOut();
   }
 
 }
