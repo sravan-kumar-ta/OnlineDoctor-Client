@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 import { SocialAuthService } from '@abacritt/angularx-social-login'
+import { LoaderService } from 'src/app/services/loader.service';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +27,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private service: AuthService,
     private router: Router,
-    private authService: SocialAuthService
+    private authService: SocialAuthService,
+    private loaderService: LoaderService
   ) { }
 
   ngOnInit(): void {
@@ -59,6 +61,7 @@ export class LoginComponent implements OnInit {
   }
 
   authenticate() {
+    this.loaderService.show();
     this.error_message = '';
 
     let data = this.loginForm.value;
@@ -78,6 +81,7 @@ export class LoginComponent implements OnInit {
           }
         });
       } else {
+        this.loaderService.hide();
         res.json().then(data => this.error_message = data.detail);
         alert('invalid credentials..!')
       }

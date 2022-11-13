@@ -34,7 +34,8 @@ import { DrMyBlogsComponent } from './components/doctor/dr-my-blogs/dr-my-blogs.
 import { DrAddBlogComponent } from './components/doctor/dr-add-blog/dr-add-blog.component';
 import { DrBlogDetailComponent } from './components/doctor/dr-blog-detail/dr-blog-detail.component';
 import { ChatComponent } from './components/chat/chat.component';
-import { PasswordResetComponent } from './components/auth/password-reset/password-reset.component'
+import { PasswordResetComponent } from './components/auth/password-reset/password-reset.component';
+import { LoaderComponent } from './components/loader/loader.component'
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { PasswordResetComponent } from './components/auth/password-reset/passwor
     DrBlogDetailComponent,
     ChatComponent,
     PasswordResetComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,

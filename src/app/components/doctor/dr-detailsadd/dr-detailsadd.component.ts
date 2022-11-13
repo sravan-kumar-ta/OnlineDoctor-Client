@@ -49,8 +49,9 @@ export class DrDetailsaddComponent implements OnInit {
       error => {
         let errordata = error.error;
         for(var err in errordata) {
-          alert(errordata[err][0])
+          alert(errordata[err])
         }
+        this.router.navigate(['doctor/profile'])
       }
     )
   }

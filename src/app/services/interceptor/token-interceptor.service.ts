@@ -1,30 +1,33 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError, switchMap } from 'rxjs';
+import { catchError, Observable, throwError, switchMap, finalize } from 'rxjs';
 import { AuthService } from '../auth.service';
+import { LoaderService } from '../loader.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenInterceptorService implements HttpInterceptor {
 
-  constructor(private service: AuthService) { }
+  constructor(private service: AuthService, private loaderService: LoaderService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    console.log(request)
     let mod_request = request
+    this.loaderService.show();
 
-    if (request.url.match("/api/google/")|| request.url.match("/password_reset/")) {
-      return next.handle(request)
+    if (request.url.match("/api/google/") || request.url.match("/password_reset/")) {
+      return next.handle(request).pipe(finalize(() => {this.loaderService.hide();}))
     } else {
       mod_request = this.AddTokenheader(request, this.service.getAccessToken());
     }
-    
+
     return next.handle(mod_request).pipe(catchError(errordata => {
       if (errordata.status === 401) {
         return this.handleRefrehToken(request, next);
       }
       return throwError(errordata);
-    })
+    }), finalize(() => {this.loaderService.hide();})
     );
 
   }
