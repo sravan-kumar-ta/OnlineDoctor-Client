@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { DoctorService } from 'src/app/services/doctor.service';
 
@@ -13,7 +14,7 @@ export class DrNavbarComponent implements OnInit {
   doctor: any;
   fm: any;
 
-  constructor(private service: AuthService, private drService: DoctorService) { }
+  constructor(private service: AuthService, private drService: DoctorService, private router: Router) { }
 
   ngOnInit(): void {
     setTimeout(() => {

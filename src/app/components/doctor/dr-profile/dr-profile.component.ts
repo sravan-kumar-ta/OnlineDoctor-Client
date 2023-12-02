@@ -16,7 +16,7 @@ export class DrProfileComponent implements OnInit {
   specialities: any;
 
   detailsForm = new FormGroup({
-    specialized_in_id: new FormControl(''),
+    specialized_in: new FormControl(''),
     charge: new FormControl(''),
     paypal_account: new FormControl(''),
     sun_start: new FormControl(''),
@@ -47,7 +47,7 @@ export class DrProfileComponent implements OnInit {
           
           // set default values to the details form
           this.detailsForm = new FormGroup({
-            specialized_in_id: new FormControl(this.doctor.specialized_in.id),
+            specialized_in: new FormControl(this.doctor.specialized_in.id),
             charge: new FormControl(this.doctor.charge),
             paypal_account: new FormControl(this.doctor.paypal_account),
             sun_start: new FormControl(this.doctor.sun_start),
@@ -75,9 +75,12 @@ export class DrProfileComponent implements OnInit {
     this.drService.updateDoctor(this.detailsForm.value).subscribe(response => {
       alert('Updated')
       this.doctor = response.body;
-    }), (error: { statusText: any; }) => {
-      alert(error.statusText);
-    }
+    }, error => {
+      let errordata = error.error;
+      for(var err in errordata) {
+        alert(errordata[err]);
+      }
+    })
   }
 
 }

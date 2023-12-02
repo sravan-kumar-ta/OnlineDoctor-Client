@@ -71,6 +71,7 @@ export class LoginComponent implements OnInit {
           localStorage.clear();
           localStorage.setItem('access_token', data.tokens.access);
           localStorage.setItem('refresh_token', data.tokens.refresh);
+          
           if (data.role == 'patient') {
             this.router.navigate(['/patient/home/'])
           } else if (data.role == 'doctor') {

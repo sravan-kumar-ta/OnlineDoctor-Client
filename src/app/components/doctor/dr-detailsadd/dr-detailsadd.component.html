@@ -6,7 +6,7 @@
             <tr>
                 <td><b>Specialized in:</b></td>
                 <td>
-                    <select formControlName="specialized_in_id" class="form-control">
+                    <select formControlName="specialized_in" class="form-control">
                         <option *ngFor="let spc of specialities" [value]="spc.id">
                             {{ spc.title }}
                         </option>

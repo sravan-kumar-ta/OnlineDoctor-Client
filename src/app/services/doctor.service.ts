@@ -14,36 +14,39 @@ export class DoctorService {
   constructor(private http: HttpClient, private globall: GloballVar) { }
 
   getDoctor() {
-    let url = `${this.domain}/doctor/`
+    let url = `${this.domain}/doctor/doctor/`
     return this.http.get(url)
   }
 
   getSpecialities() {
-    let url = `${this.domain}/specialities/`
+    let url = `${this.domain}/doctor/specialities/`
     return this.http.get(url)
   }
 
   updateDoctor(data: any) {
-    let url = `${this.domain}/doctor/`
+    let url = `${this.domain}/doctor/doctor/`
     return this.http.put(url, data, { observe: 'response' });
   }
 
   addDoctor(data: any) {
-    let url = `${this.domain}/doctor/`
+    let url = `${this.domain}/doctor/doctor/`
     return this.http.post(url, data);
   }
 
   // Appointments
+  // Currently not taken
   upcomingAppointments() {
     let url = `${this.domain}/appointments/upcoming/`
     return this.http.get(url);
   }
 
+  // Currently not taken
   activeAppointments() {
     let url = `${this.domain}/appointments/active/`
     return this.http.get(url);
   }
 
+  // Currently not taken
   completedAppointments() {
     let url = `${this.domain}/appointments/completed/`
     return this.http.get(url);

@@ -20,25 +20,33 @@ export class PtAppointmentComponent implements OnInit {
   timeInput: any;
   element: any;
   app_date: string = '';
+  maxDate = new Date(new Date().getTime() + (10 * 24 * 60 * 60 * 1000));
+  selectedTime: any
 
   constructor(private route: ActivatedRoute, private service: PatientService, private router: Router) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(obj => {
+      this.route.params.subscribe(obj => {
       this.doc_id = obj['id'];
     })
-
     this.service.getDoctor(this.doc_id).subscribe(data => {
       this.doctor = data;
     })
 
+    this.selectedTime = this.timeSlots[0].start;
+
   }
 
   getTime(date: string) {
-    console.log('calling');
-    this.timeSlots = []
+    this.timeSlots = [];
     this.app_date = date;
+    if (!date) {
+      alert("You should select a date");
+      return;
+    }
+    
     this.service.getTimes(this.doc_id, date).subscribe(data => {
+      console.log("data::", data);
       this.response = data
       this.response = this.response.slots
 
@@ -73,6 +81,8 @@ export class PtAppointmentComponent implements OnInit {
         currency: 'USD',
         value: this.doctor?.charge,
         onApprove: (res) => {
+          console.log(res);
+          
           this.service.createAppointment(this.doc_id, this.app_date, this.timeInput).subscribe(() => {
             this.router.navigate(['patient/home']);
             alert("Appointment created")

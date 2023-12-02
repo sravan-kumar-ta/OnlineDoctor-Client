@@ -14,26 +14,26 @@ export class PatientService {
   constructor(private http: HttpClient, private globall: GloballVar) { }
 
   getSpecialities() {
-    let url = `${this.domain}/specialities/`
+    let url = `${this.domain}/doctor/specialities/`
     return this.http.get(url);
   }
 
   doctorsList(id: number) {
-    let url = `${this.domain}/doctors/${id}/`
+    let url = `${this.domain}/patient/doctors/${id}/`
     return this.http.get(url);
   }
-
-  //create appointment
+  
   getDoctor(id: number){
-    let url = `${this.domain}/doctor/${id}/`
+    let url = `${this.domain}/patient/doctor/${id}/`
     return this.http.get(url);
   }
 
   getTimes(id: number, date: string){
-    let url = `${this.domain}/times/${id}/${date}/`
+    let url = `${this.domain}/patient/times/${id}/${date}/`
     return this.http.get(url);
   }
 
+  // Currently not taken
   createAppointment(doc_id: number, date: string, time: string) {
     let url = `${this.domain}/appointment/`
     let body = {
@@ -45,16 +45,19 @@ export class PatientService {
   }
 
   //get appointments
+  // Currently not taken
   getCompletedApps(){
     let url = `${this.domain}/appointment/get_completed/`
     return this.http.get(url)
   }
 
+  // Currently not taken
   getActiveApps(){
     let url = `${this.domain}/appointment/get_active/`
     return this.http.get(url)
   }
 
+  // Currently not taken
   getUpcomingApps(){
     let url = `${this.domain}/appointment/get_upcoming/`
     return this.http.get(url)

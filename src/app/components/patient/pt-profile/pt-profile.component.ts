@@ -11,12 +11,12 @@ import { PatientService } from 'src/app/services/patient.service';
 export class PtProfileComponent implements OnInit {
 
   user: any;
-  members: any;
-
-  memberForm: any = new FormGroup({
-    relation: new FormControl('', Validators.required),
-    name: new FormControl('', Validators.required),
-    age: new FormControl('', Validators.required)
+  passwordForm = false;
+  
+  passwordChangeForm = new FormGroup({
+    oldPassword: new FormControl('', Validators.required),
+    newPassword: new FormControl('', Validators.required),
+    confirmPassword: new FormControl('', Validators.required),
   })
 
   constructor(private service: AuthService, private ptService: PatientService) { }
@@ -27,5 +27,29 @@ export class PtProfileComponent implements OnInit {
     });
     
   }
+
+  toggleForm() {
+    this.passwordChangeForm.reset();
+    this.passwordForm = !this.passwordForm;
+  }
+  
+  onSubmit() {
+    console.log(this.passwordChangeForm.value.confirmPassword);
+    let oldPassword = this.passwordChangeForm.value.oldPassword;
+    let newPassword = this.passwordChangeForm.value.newPassword;
+    let confirmPassword = this.passwordChangeForm.value.confirmPassword;
+    if(newPassword != confirmPassword) {
+      alert("Password Mismatch..!")
+    } else {
+      this.service.changePassword(this.passwordChangeForm.value).subscribe(success => {
+        alert("Password Changed");
+        this.toggleForm();
+      }, error => {
+        alert(error.error.detail);
+      })
+    }
+    
+  }
+  
 
 }

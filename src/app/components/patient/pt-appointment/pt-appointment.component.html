@@ -11,16 +11,18 @@
         <!-- date querying -->
         <div class="row">
             <div class="col-md-4 offset-md-4">
-                <input class="form-control" type="date" min="{{ today | date:'yyyy-MM-dd' }}" #dateInput>
-                <small class="text-danger" style="display: none;">Please
-                    select a date</small>
+                <input class="form-control" type="date" min="{{ today | date:'yyyy-MM-dd' }}" #dateInput
+                max="{{ maxDate | date: 'yyyy-MM-dd' }}">
+                <small class="text-danger" style="display: none;">
+                    Please select a date
+                </small>
             </div>
             <div class="text-center">
                 <button (click)="getTime(dateInput.value)" class="btn btn-outline-info my-2">
                     Check Availability
                 </button>
                 <div class="col-md-4 offset-md-4 mt-4" *ngIf="dateDisplay">
-                    <label for="select-date">Select a date:</label>
+                    <label for="select-date">Select a timeslot:</label>
                     <select class="form-select" aria-label="Default select example" [(ngModel)]="timeInput">
                         <option selected disabled>Open this and select a timeslot</option>
                         <option *ngFor="let slot of timeSlots" [value]="slot.start">{{slot.start}} to {{slot.end}}

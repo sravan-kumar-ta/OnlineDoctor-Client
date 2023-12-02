@@ -14,23 +14,23 @@ export class DrDetailsaddComponent implements OnInit {
   specialities: any;
 
   detailsForm = new FormGroup({
-    specialized_in_id: new FormControl(''),
+    specialized_in: new FormControl(''),
     charge: new FormControl(''),
     paypal_account: new FormControl(''),
-    sun_start: new FormControl(''),
-    sun_end: new FormControl(''),
-    mon_start: new FormControl(''),
-    mon_end: new FormControl(''),
-    tue_start: new FormControl(''),
-    tue_end: new FormControl(''),
-    wed_start: new FormControl(''),
-    wed_end: new FormControl(''),
-    thu_start: new FormControl(''),
-    thu_end: new FormControl(''),
-    fri_start: new FormControl(''),
-    fri_end: new FormControl(''),
-    sat_start: new FormControl(''),
-    sat_end: new FormControl('')
+    sun_start: new FormControl('00:00:00'),
+    sun_end: new FormControl('00:00:00'),
+    mon_start: new FormControl('00:00:00'),
+    mon_end: new FormControl('00:00:00'),
+    tue_start: new FormControl('00:00:00'),
+    tue_end: new FormControl('00:00:00'),
+    wed_start: new FormControl('00:00:00'),
+    wed_end: new FormControl('00:00:00'),
+    thu_start: new FormControl('00:00:00'),
+    thu_end: new FormControl('00:00:00'),
+    fri_start: new FormControl('00:00:00'),
+    fri_end: new FormControl('00:00:00'),
+    sat_start: new FormControl('00:00:00'),
+    sat_end: new FormControl('00:00:00')
   })
 
   constructor(private service: DoctorService, private router: Router, private navbar: DrNavbarComponent) { }
@@ -49,9 +49,9 @@ export class DrDetailsaddComponent implements OnInit {
       error => {
         let errordata = error.error;
         for(var err in errordata) {
-          alert(errordata[err])
+          alert(errordata[err]);
         }
-        this.router.navigate(['doctor/profile'])
+        // this.router.navigate(['doctor/profile']);
       }
     )
   }

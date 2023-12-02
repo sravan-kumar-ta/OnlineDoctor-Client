@@ -13,7 +13,7 @@ export class DrAddBlogComponent implements OnInit {
   blogForm = new FormGroup({
     title: new FormControl(''),
     content: new FormControl(''),
-    is_public: new FormControl(''),
+    is_public: new FormControl(false),
   })
 
   created_post: any;
