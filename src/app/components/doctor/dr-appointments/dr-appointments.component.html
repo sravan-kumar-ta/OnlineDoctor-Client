@@ -1,7 +1,7 @@
 <div class="container px-4 py-2" id="icon-grid">
 
-    <div class="d-flex align-items-center">
-        <h2 class="pb-2 border-bottom me-4">Appointments</h2>
+    <div>
+        <h2 class="pb-2 border-bottom me-4">{{ heading }} Appointments</h2>
         <b>Filter:</b>
         <button (click)="getUpcomingApps()" class="btn btn-primary btn-sm mx-2">Upcoming only</button>
         <button (click)="getActiveApps()" class="btn btn-primary btn-sm mx-2">Active only</button>
@@ -33,7 +33,7 @@
                     </tr>
                 </tbody>
             </table>
-            <p class="text-warning border p-3" *ngIf="appointments?.length == 0">No available appointments...!</p>
+            <p class="text-warning border p-3" *ngIf="appointments?.length == 0">No {{ heading }} Appointments...!</p>
         </div>
     </div>
 </div>

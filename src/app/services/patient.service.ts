@@ -6,12 +6,10 @@ import { GloballVar } from './globallVariable';
   providedIn: 'root'
 })
 export class PatientService {
-  
-  // domain: string = 'http://127.0.0.1:8000/api'
-  // domain: string = 'https://online-doctor-x.herokuapp.com/api'
-  domain: string = this.globall.domain
 
   constructor(private http: HttpClient, private globall: GloballVar) { }
+
+  domain: string = this.globall.domain;
 
   getSpecialities() {
     let url = `${this.domain}/doctor/specialities/`
@@ -33,34 +31,28 @@ export class PatientService {
     return this.http.get(url);
   }
 
-  // Currently not taken
   createAppointment(doc_id: number, date: string, time: string) {
-    let url = `${this.domain}/appointment/`
+    let url = `${this.domain}/patient/create-appointment/`
     let body = {
-      'doc_id': doc_id,
+      'doctor': doc_id,
       'date': date,
       'time': time,
     }
     return this.http.post(url, body)
   }
-
-  //get appointments
-  // Currently not taken
+  
   getCompletedApps(){
-    let url = `${this.domain}/appointment/get_completed/`
+    let url = `${this.domain}/patient/filter-appointment/?status=completed`
     return this.http.get(url)
   }
-
-  // Currently not taken
+  
   getActiveApps(){
-    let url = `${this.domain}/appointment/get_active/`
+    let url = `${this.domain}/patient/filter-appointment/?status=active`
     return this.http.get(url)
   }
-
-  // Currently not taken
+  
   getUpcomingApps(){
-    let url = `${this.domain}/appointment/get_upcoming/`
+    let url = `${this.domain}/patient/filter-appointment/?status=upcoming`
     return this.http.get(url)
   }
-
 }

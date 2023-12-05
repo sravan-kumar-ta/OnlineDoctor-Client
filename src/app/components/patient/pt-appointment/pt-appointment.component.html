@@ -28,7 +28,7 @@
                         <option *ngFor="let slot of timeSlots" [value]="slot.start">{{slot.start}} to {{slot.end}}
                         </option>
                     </select>
-                    <button (click)="makePayment(dateInput.value)" class="btn btn-outline-info my-2">
+                    <button (click)="demoPayment(dateInput.value)" class="btn btn-outline-info my-2">
                         Make Payment
                     </button>
                 </div>

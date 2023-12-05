@@ -7,36 +7,31 @@ import { GloballVar } from './globallVariable';
   providedIn: 'root'
 })
 export class AuthService {
-  
-  // domain: string = 'http://127.0.0.1:8000'
-  // domain: string = 'https://online-doctor-x.herokuapp.com/api'
-  domain: string = this.globall.domain
-  url: string = ''  
-  options: any = {
-    method: 'GET',
-    body: '',
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8'
-    }
-  }
 
   constructor(private router: Router, private http: HttpClient, private globall: GloballVar) { }
+  
+  domain: string = this.globall.domain;
 
   login(data: any) {
-    this.url = `${this.domain}/user/login/`
-    this.options.method = 'POST'
-    this.options.body = JSON.stringify(data)
-
-    return fetch(this.url, this.options)
+    const url = `${this.domain}/user/login/`
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {'Content-type': 'application/json; charset=UTF-8'}
+    }
+    
+    return fetch(url, options)
   }
 
   register(data: any) {
-    this.url = `${this.domain}/user/register/`
-    this.options.method = 'POST'
-    let local_option = this.options
-    local_option.body = JSON.stringify(data)
+    const url = `${this.domain}/user/register/`
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {'Content-type': 'application/json; charset=UTF-8'}
+    }
 
-    return fetch(this.url, local_option)
+    return fetch(url, options)
   }
   
   getUser() {
@@ -78,14 +73,10 @@ export class AuthService {
 
   changePassword(data: any) {
     let url = `${this.domain}/user/change-password/`;
-    // let local_option = this.options;
-    // local_option.method = 'POST';
     let body = {
       "new_password": data.newPassword,
       "old_password": data.oldPassword,
     };
-    // local_option.body = JSON.stringify(body);
-    // console.warn(local_option.body)
     
     return this.http.post(url, body);
   }
@@ -113,6 +104,4 @@ export class AuthService {
     let url = `${this.domain}/password_reset/confirm/`;
     return this.http.post(url, data)
   }
-
-
 }

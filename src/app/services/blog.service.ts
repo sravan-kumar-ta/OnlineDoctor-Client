@@ -7,11 +7,9 @@ import { GloballVar } from './globallVariable';
 })
 export class BlogService {
   
-  // domain: string = 'http://127.0.0.1:8000/api'
-  // domain: string = 'https://online-doctor-x.herokuapp.com/api'
-  domain: string = this.globall.domain
-
   constructor(private http: HttpClient, private globall: GloballVar) { }
+
+  domain: string = this.globall.domain;
 
   getAllBlogs(pageNumber: number) {
     let url = `${this.domain}/blog/posts/`

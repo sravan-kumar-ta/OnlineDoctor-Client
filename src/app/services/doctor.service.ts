@@ -6,12 +6,10 @@ import { GloballVar } from './globallVariable';
   providedIn: 'root'
 })
 export class DoctorService {
-  
-  // domain: string = 'http://127.0.0.1:8000/api'
-  // domain: string = 'https://online-doctor-x.herokuapp.com/api'
-  domain: string = this.globall.domain
 
   constructor(private http: HttpClient, private globall: GloballVar) { }
+  
+  domain: string = this.globall.domain;
 
   getDoctor() {
     let url = `${this.domain}/doctor/doctor/`
@@ -36,19 +34,19 @@ export class DoctorService {
   // Appointments
   // Currently not taken
   upcomingAppointments() {
-    let url = `${this.domain}/appointments/upcoming/`
+    let url = `${this.domain}/doctor/filter-appointment/?status=upcoming`
     return this.http.get(url);
   }
 
   // Currently not taken
   activeAppointments() {
-    let url = `${this.domain}/appointments/active/`
+    let url = `${this.domain}/doctor/filter-appointment/?status=active`
     return this.http.get(url);
   }
 
   // Currently not taken
   completedAppointments() {
-    let url = `${this.domain}/appointments/completed/`
+    let url = `${this.domain}/doctor/filter-appointment/?status=completed`
     return this.http.get(url);
   }
 }

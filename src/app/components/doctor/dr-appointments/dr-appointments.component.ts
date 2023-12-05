@@ -10,17 +10,19 @@ export class DrAppointmentsComponent implements OnInit {
 
   appointments: any;
   chat: boolean = false;
+  heading: string = 'Active';
 
   constructor(private service: DoctorService) { }
 
   ngOnInit(): void {
-    this.getUpcomingApps();
+    this.getActiveApps();
   }
 
   getUpcomingApps() {
     this.service.upcomingAppointments().subscribe(data => {
       this.appointments = null;
       this.chat = false;
+      this.heading = 'Upcoming';
       this.appointments = data;
     })
   }
@@ -29,6 +31,7 @@ export class DrAppointmentsComponent implements OnInit {
     this.service.activeAppointments().subscribe(data => {
       this.appointments = null;
       this.chat = true;
+      this.heading = 'Active';
       this.appointments = data;
     })
   }
@@ -37,8 +40,8 @@ export class DrAppointmentsComponent implements OnInit {
     this.service.completedAppointments().subscribe(data => {
       this.appointments = null;
       this.chat = false;
+      this.heading = 'Completed';
       this.appointments = data;
     })
   }
-
 }

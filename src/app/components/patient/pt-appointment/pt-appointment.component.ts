@@ -29,12 +29,12 @@ export class PtAppointmentComponent implements OnInit {
       this.route.params.subscribe(obj => {
       this.doc_id = obj['id'];
     })
+
     this.service.getDoctor(this.doc_id).subscribe(data => {
       this.doctor = data;
     })
 
     this.selectedTime = this.timeSlots[0].start;
-
   }
 
   getTime(date: string) {
@@ -54,9 +54,21 @@ export class PtAppointmentComponent implements OnInit {
       Object.entries(this.response).forEach(([, value]) => {
         this.timeSlots.push(value)
       });
+      /*
       this.dateDisplay = true;
       this.element = document.getElementById('paymentDIV')
       this.element.style.display = 'none';
+*/
+      this.dateDisplay = true;
+      this.hidePaymentElement();
+
+    })
+  }
+
+  demoPayment(date: string) {
+    this.service.createAppointment(this.doc_id, this.app_date, this.timeInput).subscribe(() => {
+      this.router.navigate(['patient/home']);
+      alert("Appointment created")
     })
   }
 
@@ -92,4 +104,9 @@ export class PtAppointmentComponent implements OnInit {
     )
   }
 
+  private hidePaymentElement(): void {
+    if (this.element) {
+      this.element.style.display = 'none';
+    }
+  }
 }
