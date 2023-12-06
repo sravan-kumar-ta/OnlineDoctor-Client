@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import * as io from 'socket.io-client';
@@ -12,7 +11,7 @@ export class WebsocketService {
   private socket: any;
   readonly url: string = this.globall.socketDomain
 
-  constructor(private http: HttpClient, private globall: GloballVar) {
+  constructor(private globall: GloballVar) {
     this.socket = io.connect(this.url);
   }
 

@@ -39,9 +39,8 @@ export class AuthService {
     return this.http.get(url);
   }
   
-  // Currently not taken
   getUserById(id:number) {
-    let url = `${this.domain}/user_by_id/${id}/`;
+    let url = `${this.domain}/user/user_by_id/${id}/`;
     return this.http.get(url);
   }
 

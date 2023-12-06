@@ -6,5 +6,6 @@ import { Injectable } from "@angular/core";
 export class GloballVar {
     public domain = 'http://localhost:8000'
     
-    public socketDomain = "https://online-doctor-chat-server.herokuapp.com/"
+    // public socketDomain = "https://online-doctor-chat-server.herokuapp.com/"
+    public socketDomain = "http://localhost:3000"
 }
