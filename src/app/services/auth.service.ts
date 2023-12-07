@@ -88,7 +88,7 @@ export class AuthService {
 
   // Currently not taken
   googleAuth(token: string){
-    let url = `${this.domain}/google/`;
+    let url = `${this.domain}/user/google/`;
     return this.http.post(url, {'auth_token': token})
   }
 

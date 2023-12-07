@@ -58,7 +58,7 @@ export class PtAppointmentComponent implements OnInit {
       this.dateDisplay = true;
       this.element = document.getElementById('paymentDIV')
       this.element.style.display = 'none';
-*/
+      */
       this.dateDisplay = true;
       this.hidePaymentElement();
 
@@ -72,6 +72,7 @@ export class PtAppointmentComponent implements OnInit {
     })
   }
 
+  /*
   makePayment(date: string){
     this.element = document.getElementById('paymentDIV')
     this.dateInput = new Date(date);
@@ -103,6 +104,7 @@ export class PtAppointmentComponent implements OnInit {
       }
     )
   }
+  */
 
   private hidePaymentElement(): void {
     if (this.element) {

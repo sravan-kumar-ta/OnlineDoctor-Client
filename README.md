@@ -1,12 +1,10 @@
-# OnlineDoctor
+# Online Doctor - Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
-
-## In this project
+## In this project 🚀
 * Google social login
-* Paypal payment gateway
 * Authentication Guards
 * Http Interceptor
+* Live Chat
 
 ## Development server
 
@@ -31,3 +29,6 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+----------
+[![Generic badge](https://img.shields.io/badge/Angular-14.2.1-blue.svg)](https://shields.io/)

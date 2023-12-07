@@ -31,7 +31,7 @@ export class UserDetailsComponent implements OnInit {
       if (this.userData.body.role == 'patient') {
         this.router.navigate(['/patient/home/'])
       } else if (this.userData.body.role == 'doctor') {
-        // navigaete to doctor home page
+        this.router.navigate(['/doctor/profile/'])
       } else {
         this.service.logout()
       }

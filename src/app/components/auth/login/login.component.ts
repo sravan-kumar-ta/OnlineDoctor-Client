@@ -83,8 +83,11 @@ export class LoginComponent implements OnInit {
         });
       } else {
         this.loaderService.hide();
-        res.json().then(data => this.error_message = data.detail);
-        alert('invalid credentials..!')
+        res.json().then(data => {
+          this.error_message = data.detail;
+          console.log(data);
+        });
+        // alert('invalid credentials..!');
       }
     });
 
