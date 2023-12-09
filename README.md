@@ -1,34 +1,18 @@
 # Online Doctor - Frontend
 
-## In this project 🚀
-* Google social login
-* Authentication Guards
-* Http Interceptor
-* Live Chat
+## Overview 🚀
 
-## Development server
+*The Online Doctor Consultation Service provides a platform for seamless communication between patients and doctors. Users can log in as either a patient or a doctor, facilitating the process of making appointments and engaging in real-time chat consultations.*
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## In this project
+- **Authentication Guards:** Implement robust authentication guards to secure access to doctor and patient-specific APIs, ensuring data privacy and integrity.
+- **HTTP Interceptor:** Utilize an HTTP interceptor for streamlined token refreshing, enhancing the security and validity of user sessions.
+- **Google Social Login:** Simplify user onboarding by allowing users to effortlessly sign up and log in using their Google accounts.
+- **Real-Time Communication:** Power the platform with real-time communication using `Socket.io` for live chat features, facilitating instant and interactive discussions between patients and doctors.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Backend Repository
+👨‍💻 [Online Doctor - Backend](https://github.com/sravan-kumar-ta/Online-Doctor--Server)
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 ----------
-[![Generic badge](https://img.shields.io/badge/Angular-14.2.1-blue.svg)](https://shields.io/)
